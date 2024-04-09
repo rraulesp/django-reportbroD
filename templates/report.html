@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>
+    {% block title %}
+Editando plantilla del reporte 
+    {% endblock %}
+
+ </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Novus Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<!-- app favicon -->
+<link rel="shortcut icon" href="{% static 'assets/img/favicon.ico' %}">
+<link href="{% static 'reportlib/reportbro.css' %}" rel="stylesheet" type="text/css"/>
+<script src="{% static 'reportlib/reportbro.js' %}"></script>
+<script src="{% static 'reportlib/js/knockout-3.5.1.min.js' %}"></script>
+<script src="{% static 'reportlib/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'reportlib/js/jquery.cookie.js' %}"></script>
+	<!-- plugin stylesheets -->
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors.css' %}" />
+	<!-- app style -->
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}" />
+
+<link href="{% static 'reportlib/css/styles.css' %}" rel="stylesheet" type="text/css"/>
+
+<script type="text/javascript">
+
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                const csrftoken = $.cookie('csrftoken');
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+    
+    </script>
+
+</head>
+<body>
+    
+
+    <span class="label label-success"><b>Plantilla {{name}} </b></span> <a style="color: whitesmoke;" href="{% url 'reportbroD:list' %}"><span class="label label-success"><i class="fa fa-list"></i><b> Volver a la lista </b></span></a>
+    
+    <div id="reportbro"></div>
+
+    <script type="text/javascript">
+    
+    function saveReport() {
+        const report = rb.getReport();
+    
+        // console.log(JSON.stringify(report));
+        $.ajax("{% url 'reportbroD:report_save' pk %}", {
+            data: JSON.stringify(report),
+            type: "PUT", contentType: "application/json",
+            success: function(data) {
+                // report definition saved successfully,
+                // set modified flag to false to disable save button
+                rb.setModified(false);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert('saving report failed');
+            }
+        });
+    }
+    
+    const report = {{ report_definition }};
+    const rb = new ReportBro(document.getElementById('reportbro'), {
+        reportServerUrl: "{% url 'reportbroD:report_run' %}",
+        saveCallback: saveReport,
+    });
+    if (report) {
+        rb.load(report);
+    }
+    
+    </script>
+</body>
+</html>

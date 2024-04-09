@@ -1,0 +1,166 @@
+{% extends 'bases/base.html'%}
+{% load static %}
+
+
+{% block content %}
+
+<div class="app-main" id="main">
+    <!-- begin container-fluid -->
+    <div class="container-fluid">
+        <!-- begin row -->
+        <div class="row">
+            <div class="col-md-12 m-b-30">
+                <!-- begin page title -->
+                <div class="d-block d-sm-flex flex-nowrap align-items-center">
+                    <div class="page-title mb-2 mb-sm-0">
+                        <h1>Reportes</h1>
+                    </div>
+                    <div class="ml-auto d-flex align-items-center">
+                        <nav>
+                            <ol class="breadcrumb p-0 m-b-0">
+                                <li class="breadcrumb-item">
+                                    <a href="/"><i class="ti ti-home"></i></a>
+                                </li>
+                                <li class="breadcrumb-item active text-primary" aria-current="page">Administración de Reportes</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+                <!-- end page title -->
+            </div>
+        </div>
+        <!-- end row -->
+        <div  style="padding-bottom: 20px;">
+          </div>
+        <!-- start file maneger -->
+    
+        <!-- start file maneger -->
+    
+    
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-statistics clients-contant">
+                    <div class="card-header">
+                        
+                        <div class="d-xxs-flex justify-content-between align-items-center">
+                            <a href="{% url 'reportbroD:create' %}" class="btn btn-info" title="Agregar reporte" ><i class="fa fa-plus-circle"></i></a>
+ 
+                           
+                        </div>
+                    </div>
+                    <div class="card-body py-0 table-responsive">
+                        <table class="table clients-contant-table mb-0">
+                            <thead>
+                                <tr style="text-align: center;">
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Código de uso</th>
+                                    <th scope="col">Modificado</th>
+                                    
+                                    <th scope="col">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% for report in object_list%}
+
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="bg-img mr-4">
+                                                <img src="{% static 'assets/img/file-icon/pdf.png'%}" class="img-fluid" alt="Clients-01">
+                                            </div>
+                                            <p class="font-weight-bold">{{report.name}}</p>
+                                        </div>
+                                    </td>
+                                    <td style="text-align: center;">{{report.id}}</td>
+                                   
+                                    <td style="text-align: center;"><a href="javascript:void(0)" class="dot"></a><span>{{ report.last_modified_at | date}}</span></td>
+                                    <td style="text-align: center;">
+                                        <a href="{% url 'reportbroD:edit' report.id %}" class="btn btn-icon btn-outline-primary btn-round mr-2 mb-2 mb-sm-0 " title="Editar datos del reporte"><i class="ti ti-pencil"></i></a>
+                                        
+                                        <a href="{% url 'reportbroD:template' report.pk %}" class="btn btn-icon btn-outline-success btn-round mr-2 mb-2 mb-sm-0" title="Editar plantilla del reporte"><i class="ti ti-file"></i></a>
+                                      
+                                        <button  class="btn btn-icon btn-outline-danger btn-round mr-2 mb-2 mb-sm-0" title="Eliminar reporte" data-toggle="modal" data-target="#report{{report.id}}"><i class="ti ti-close"></i></button>
+                                        
+                                        <a href="{% url 'reportbroD:duplicate' report.pk %}" class="btn btn-icon btn-outline-warning btn-round mr-2 mb-2 mb-sm-0" title="Duplicar reporte"><i class="ti ti-files"></i></a>
+                                    </td>
+                                </tr>
+
+                                <div class="modal fade" id="report{{report.id}}" tabindex="-1" role="dialog" aria-labelledby="report{{report.id}}" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Eliminar reporte</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Deseas eliminar el reporte {{report.name}} !?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                                                <a href="{% url 'reportbroD:delete' report.id %}" class="btn btn-danger">Eliminar</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                {% empty %}
+  
+                                <div class="col-12 mb-3">
+                                    <div class="alert alert-danger" role="alert">
+                                        <i class="fa fa-info-circle"></i> No se encuentra registrado ningún reporte
+                                    </div>
+                                </div>
+                                {% endfor %}
+  
+                            </tbody>
+    </table>
+                    </div>
+
+                    <div class="card-body" >
+                               
+                        <nav aria-label="Page navigation example" >
+                            <ul class="pagination justify-content-center">
+                                {% if page_obj.has_previous %}
+            
+            
+                                <li class="page-item"><a class="page-link"
+                                        href="?page={{page_obj.previous_page_number}}">Anterior</a></li>
+                                {% endif %}
+            
+                                <li class="page-item active"><a class="page-link"  >Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</a></li>
+                               
+                                {% if page_obj.has_next %}
+                                <li class="page-item"><a class="page-link" href="?page={{page_obj.next_page_number}}">Siguiente</a>
+                                </li>
+            
+                                
+            
+                                {% endif %}
+            
+            
+                            </ul>
+                        </nav>
+                    </div>
+                </div></div>
+                </div>
+    
+    
+    
+    
+    
+    
+    </div>
+    <!-- end container-fluid -->
+</div>
+
+
+
+
+
+
+
+{% endblock %}

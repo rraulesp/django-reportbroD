@@ -1,0 +1,113 @@
+{% load static %}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-statistics ">
+            <img class="card-img-top" height="400px" width="400px" src="{% static 'assets/img/parametros.png' %}" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Formato de datos</h4>
+                <p class="card-text" style="text-align: justify;">
+
+                    Los reportes de <b>ReportBro</b> aceptan los datos mediante un diccionario
+                                                                                                o un contexto (como una función vista). Cada parámetro del contexto, por lo tanto, se define con su nombre (dato irrepetible y 
+                                                                                                que debe coincidir con el definido durante el diseño del reporte) y su información (un texto, número, fecha, imagen, lista simple de elementos o de objetos.)
+                                                                                            Los Objetos dentro de una lista se deben definir como un diccionario para que el Reporte puede reconocer sus atributos.
+                </p>
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card card-statistics ">
+            <img class="card-img-top" src="{% static 'assets/img/lista.png' %}" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Función convert_list_to_dict()</h4>
+                <p class="card-text" style="text-align: justify;">
+
+                    Esta función auxiliar se puede utilizar para cualquier clase de tipo Model cuyos campos deban estar en el reporte.
+                    Toma como parámetro una Query realizada con un Model de base de datos (hijo también de ReportModel) y lo convierte
+                    en una lista o colección para ser utilizada por un reporte.
+                    
+                </p>
+                <a href="javascript:void(0)" class="btn btn-primary mt-2">Compatibilidad con tipos de campos complejos:</a>  
+            </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item "><b>ImageFields </b> (Formato de la imagen, solo soportable .png y .jpg) </li>
+            <li class="list-group-item "><b>DatetimeFields</b> (Salida como un string con formato ISO) </li>
+            <li class="list-group-item "><b>No convierte relaciones ManyToMany, ManyToOne o OneToOne</b> (Los datos de cada instancia deben ser los más simples posibles) </li>
+            
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+
+    <div class="col-md-6">
+        <div class="card card-statistics ">
+            <img class="card-img-top" src="{% static 'assets/img/dictionario.png' %}" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Función to_dict()</h4>
+                <p class="card-text" style="text-align: justify;">
+
+                    Esta función auxiliar tiene el mismo objetivo que la función convert_list_to_dict(), pero su funcionalidad se aplica a un solo objeto Model.
+                    Convierte una instancia de un clase Model pasada como parámetro en un diccionario de clave-valor entendible por el reporte.
+                Soporta los mismos datos que la clase convert_list_to_dict().
+                </p>
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card card-statistics mb-30">
+            <img class="card-img-top"src="{% static 'assets/img/base64.png' %}" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Función convert_to_base64()</h4>
+                <p class="card-text" style="text-align: justify;">
+                   Esta función constituye una parte extra de la clase ReportModel, que puede ser utilizada por fuera de esa clase para convertir 
+                   una imagen cualquiera a formato <b>base 64</b>. Este formato es necesario para que la imagen se muestre sin problemas en el reporte.
+
+
+
+                                                        
+                </p>  
+                <a href="javascript:void(0)" class="btn btn-primary mt-2">Se le deben colocar los parámetros pertinentes:</a>  
+                </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item "><b>path </b> (Ruta de la imagen)  </li>
+                <li class="list-group-item "><b>format_image</b> (Formato de la imagen, solo soportable .png y .jpg) </li>
+                
+            </ul>
+           
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+
+    <div class="col-md-6">
+        <div class="card card-statistics ">
+            
+            <div class="card-body">
+                <h4 class="card-title">Función reportPDF() y reportXLSX()</h4>
+                <p class="card-text" style="text-align: justify;">
+
+                    Esta funciones permiten la exportación de los reportes en un fichero pdf y xlsx respectivamente, tomando en cuenta el reporte seleccionado y los 
+                    datos pasados como parámetros.  
+                </p>
+                
+                <a href="javascript:void(0)" class="btn btn-primary mt-2">Se le deben colocar los parámetros pertinentes:</a>  
+            </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item "><b>request </b> (Request que siempre se pasa como parámetros en las vistas)  </li>
+            <li class="list-group-item "><b>code</b> (Código que identifica el reporte que se quiere exportar) </li>
+            <li class="list-group-item "><b>data</b> (Datos pasados como un contexto al reporte. Es un diccionario. Cada objeto pasado como contexto debe ser en sí un dato simple
+                (string, int, date, etc) y un objeto convertido en un diccionario.) </li>
+            
+        </ul>
+        </div>
+    </div>
+   
+</div>

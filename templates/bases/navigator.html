@@ -1,0 +1,33 @@
+<aside class="app-navbar">
+    <!-- begin sidebar-nav -->
+    <div class="sidebar-nav scrollbar scroll_light">
+        <ul class="metismenu " id="sidebarNav">
+            <li class="nav-static-title">Opciones principales</li>
+
+ {% for elem in menu %}
+ <li 
+    {% if active_page == elem.id %}
+    class="active"
+  
+    {% endif %}
+
+    >
+
+    <a class=" has-arrow "  href="{{elem.url}}" aria-expanded="false">
+
+    <i class="{{elem.icon}}"></i>
+        <span class="nav-title">{{elem.label}}</span>
+
+    </a>
+
+</li>
+       
+        {% endfor %}
+          
+
+
+
+        </ul>
+    </div>
+    <!-- end sidebar-nav -->
+</aside>

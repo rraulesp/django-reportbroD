@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+	<title>
+		{% block title %}
+		Listado de Reportes
+		{% endblock %}
+
+	</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<meta name="description" content="Admin template that can be used to build dashboards for CRM, CMS, etc." />
+	<meta name="author" content="Potenza Global Solutions" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	{% block config%}
+	<!-- app favicon -->
+	<link rel="shortcut icon" href="{% static 'assets/img/favicon.ico' %}">
+	<!-- google fonts 
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+	-->
+	<!-- plugin stylesheets -->
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/vendors.css' %}" />
+	<!-- app style -->
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}" />
+
+	{% endblock %}
+
+	{% block configr%}
+
+	{% endblock %}
+</head>
+
+<body>
+	<!-- begin app -->
+	<div class="app">
+		<!-- begin app-wrap -->
+		<div class="app-wrap">
+			{% block header %}
+			{% include 'bases/header.html' %}
+			{% endblock %}
+			<div class="app-container">
+				{% block navigator %}
+				{% include 'bases/navigator.html' %}
+				{% endblock %}
+
+				{% block content %}
+				Contenido
+				{% endblock %}
+
+			</div>
+
+			{% block footer %}
+
+
+			{% include 'bases/footer.html' %}
+
+			{% endblock %}
+
+
+			<!-- end footer -->
+		</div>
+		<!-- end app-wrap -->
+	</div>
+	<!-- plugins -->
+	<script src="{% static 'assets/js/vendors.js' %}"></script>
+
+	<!-- custom app -->
+	<script src="{% static 'assets/js/app.js' %}"></script>
+
+	</div>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+{% load static %}
+
+<header class="app-header top-bar">
+    <!-- begin navbar -->
+    <nav class="navbar navbar-expand-md">
+
+        <!-- begin navbar-header -->
+        <div class="navbar-header d-flex align-items-center">
+            <a href="javascript:void:(0)" class="mobile-toggle"><i class="ti ti-align-right"></i></a>
+            <a class="navbar-brand" href="/" >
+                <img src="{% static 'assets/img/logo.png' %}" class="img-fluid logo-desktop" alt="logo" />
+                <img src="{% static 'assets/img/logo-icon.png' %}" class="img-fluid logo-mobile" alt="logo" />
+            </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="ti ti-align-left"></i>
+        </button>
+        <!-- end navbar-header -->
+        <!-- begin navigation -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navigation d-flex">
+                <ul class="navbar-nav nav-left">
+                    <li class="nav-item">
+                        <a href="javascript:void(0)" class="nav-link sidebar-toggle">
+                            <i class="ti ti-align-right"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  " href="{% url 'reportbroD:list' %}"  role="button"  aria-haspopup="true" aria-expanded="false">
+                            
+                            <i class="fa fa-edit"></i> Administración de Reportes
+                          
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+
+            </div>
+        </div>
+        <!-- end navigation -->
+    </nav>
+    <!-- end navbar -->
+</header>
