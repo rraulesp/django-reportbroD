@@ -1,7 +1,6 @@
 import datetime
 import decimal
 import json
-import os
 from django.conf import settings
 from django.urls import reverse
 from django.utils.translation import gettext as _
@@ -54,7 +53,6 @@ def to_dict(instance):
                 data[f.name] = None
         else:
             data[f.name] = f.value_from_object(instance)
-            
     return data
 
 
@@ -70,7 +68,7 @@ def convert_to_base64(path, format_image):
     """
     Nota: path se refiere a la ruta de la imagen y  format_image se refiere al fomato de la imagen (jpg, png, jpeg, etc)
     Este método permite convertir una imagen jpg o png a una imagen en base 64 
-      para que ReportBro pueda renderizarla como parte de sus parámetros  """
+    para que ReportBro pueda renderizarla como parte de sus parámetros  """
     import base64
     from django.conf import settings
     print(str(settings.BASE_DIR)+path)

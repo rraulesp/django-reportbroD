@@ -45,3 +45,12 @@ class ReportDefinition(models.Model):
         
         return self.name
     
+    def to_dict(self):
+        return {
+            "report_definition":self.report_definition,
+            "name":self.name,
+            "remark":self.remark,
+            "last_modified_at":self.last_modified_at.isoformat()
+
+        }
+    

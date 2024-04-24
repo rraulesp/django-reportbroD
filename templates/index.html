@@ -44,7 +44,13 @@
                         
                         <div class="d-xxs-flex justify-content-between align-items-center">
                             <a href="{% url 'reportbroD:create' %}" class="btn btn-info" title="Agregar reporte" ><i class="fa fa-plus-circle"></i></a>
- 
+                           
+                          
+                           
+                            <a href="{% url 'reportbroD:import' %}" class="btn btn-primary" title="Importar reporte" ><i class="fa fa-upload"></i></a >
+  
+                      
+                           
                            
                         </div>
                     </div>
@@ -67,22 +73,24 @@
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="bg-img mr-4">
-                                                <img src="{% static 'assets/img/file-icon/pdf.png'%}" class="img-fluid" alt="Clients-01">
+                                                <img src="{% static 'assets/img/file-icon/reporte.png'%}" class="img-fluid" alt="Clients-01">
                                             </div>
-                                            <p class="font-weight-bold">{{report.name}}</p>
+                                            <p class="font-weight-bold"> <a href="{% url 'reportbroD:edit' report.id %}" title="Editar datos del reporte">{{report.name}}</a></p>
                                         </div>
                                     </td>
                                     <td style="text-align: center;">{{report.id}}</td>
                                    
                                     <td style="text-align: center;"><a href="javascript:void(0)" class="dot"></a><span>{{ report.last_modified_at | date}}</span></td>
                                     <td style="text-align: center;">
-                                        <a href="{% url 'reportbroD:edit' report.id %}" class="btn btn-icon btn-outline-primary btn-round mr-2 mb-2 mb-sm-0 " title="Editar datos del reporte"><i class="ti ti-pencil"></i></a>
                                         
                                         <a href="{% url 'reportbroD:template' report.pk %}" class="btn btn-icon btn-outline-success btn-round mr-2 mb-2 mb-sm-0" title="Editar plantilla del reporte"><i class="ti ti-file"></i></a>
                                       
                                         <button  class="btn btn-icon btn-outline-danger btn-round mr-2 mb-2 mb-sm-0" title="Eliminar reporte" data-toggle="modal" data-target="#report{{report.id}}"><i class="ti ti-close"></i></button>
                                         
                                         <a href="{% url 'reportbroD:duplicate' report.pk %}" class="btn btn-icon btn-outline-warning btn-round mr-2 mb-2 mb-sm-0" title="Duplicar reporte"><i class="ti ti-files"></i></a>
+                                        
+                                        <a href="{% url 'reportbroD:exportation' report.pk %}" class="btn btn-icon btn-outline-primary btn-round mr-2 mb-2 mb-sm-0 " title="Exportar reporte"><i class="ti ti-download"></i></a>
+                                        
                                     </td>
                                 </tr>
 
@@ -149,7 +157,28 @@
                 </div>
     
     
-    
+                <div class="modal fade" id="importing" tabindex="-1" role="dialog" aria-labelledby="importing" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Importar reporte</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form method="POST">
+                            <div class="modal-body">
+                                <h5>El fichero debe ser de tipo .json</h5>
+                                <input type="file" class="form-control-file" id="filetemplate" >
+                            </div>
+                            <div class="modal-footer"> 
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-danger">Importar reporte</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
     
     
     

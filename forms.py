@@ -20,4 +20,12 @@ class ReportForm(forms.ModelForm):
             }  
 
 
+
+class ReportImpForm(forms.Form):
+
+    template= forms.FileField(label="Plantilla",widget=forms.FileInput(attrs={"class":"form-control-file","id":"filetemplate"}))
+
+    
+
+
       

@@ -1,0 +1,85 @@
+{% extends 'bases/base.html'%}
+{% load static %}
+
+{% block title %}
+		Importando Reporte
+		{% endblock %}
+
+{% block content %}
+<div class="app-main" id="main">
+    <!-- begin container-fluid -->
+    <div class="container-fluid">
+        <!-- begin row -->
+        <div class="row">
+            <div class="col-md-12 m-b-30">
+                <!-- begin page title -->
+                <div class="d-block d-sm-flex flex-nowrap align-items-center">
+                    <div class="page-title mb-2 mb-sm-0">
+                        <h1>Importando Reporte</h1>
+                    </div>
+                    <div class="ml-auto d-flex align-items-center">
+                        <nav>
+                            <ol class="breadcrumb p-0 m-b-0">
+                                <li class="breadcrumb-item">
+                                    <a href="/"><i class="ti ti-home"></i></a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a href="{% url 'reportbroD:list' %}">Administración de Reportes</a> 
+                                </li>
+                                <li class="breadcrumb-item active text-primary" aria-current="page">Importar</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+                <!-- end page title -->
+            </div>
+        </div>
+        <!-- end row -->
+        <!-- begin row -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card card-statistics">
+                    <div class="card-header">
+        
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="nombre">{{form.template.label}} (Formato en JSON)</label>
+        
+                                {{form.template}}
+        
+        
+                              
+
+                            {% if error %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong> {{error}}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <i class="ti ti-close"></i>
+                                </button>
+                            </div>
+
+                            {% endif %}
+
+                            </div>
+                           
+        
+                            <button type="submit" class="btn btn-primary">Subir</button>
+                        </form>
+                        
+                    </div>
+               
+
+    </div>
+</div>
+
+
+</div>
+        <!-- end row -->
+    </div>
+    <!-- end container-fluid -->
+</div>
+
+{% endblock %}

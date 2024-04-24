@@ -303,5 +303,3 @@ def reportXLSX(request, code, data, file="reporte" ):
         return HttpResponseServerError('report error: ' + str(ex.error))
     except Exception as ex:
         return HttpResponseServerError('report exception: ' + str(ex))
-    
-

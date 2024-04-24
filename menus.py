@@ -4,7 +4,7 @@ from django.urls import reverse
 def get_menu_items(request):
     """Returns application menu items with special class for active menu item."""
     return {
-      "active_page":"",
+      "active_page":"reportlist",
       "menu": ( {'url': reverse('reportbroD:list'), 'label': "ReportBro Designer",
         'icon': "nav-icon ti ti-pencil-alt",  'id':'reportlist' },
         
@@ -12,10 +12,10 @@ def get_menu_items(request):
         'icon': "nav-icon ti ti-comment-alt",  'id':  'reportdocs' },
         
          {'url': reverse('admin:index'), 'label': "Administración del Sitio",
-        'icon': "nav-icon fa fa-users",  'id': '' },
+        'icon': "nav-icon fa fa-users",  'id': 'admin' },
         
          {'url': '/', 'label': "Inicio",
-        'icon': "nav-icon ti ti-rocket",  'id': ''}
+        'icon': "nav-icon ti ti-rocket",  'id': 'home'}
          )
          }
 
