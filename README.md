@@ -54,9 +54,9 @@ Using report
      imagen= convert_to_base64(products.first().imagen.url, 'jpg')
    
      data={
-   "productos":productos,
-   "imagen":imagen
-    }
+            "productos":productos,
+            "imagen":imagen
+          }
    
      code_report= 12
 
