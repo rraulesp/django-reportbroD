@@ -30,7 +30,7 @@ Quick start
 
    path("reportbroD/", include("django_reportbroD.urls", namespace="reportbroD")),
 
-4. Run ``python manage.py migrate`` to create the models and to migrating to data base.
+4. Run ``python manage.py migrate reportbroD`` to create the models and to migrating to data base.
 
 5. Start the development server.
 
@@ -54,9 +54,9 @@ Using report
      imagen= convert_to_base64(products.first().imagen.url, 'jpg')
    
      data={
-   "productos":productos,
-   "imagen":imagen
-    }
+            "productos":productos,
+            "imagen":imagen
+          }
    
      code_report= 12
 
