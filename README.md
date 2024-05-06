@@ -42,8 +42,7 @@ Using report
 
 1. Create a app to using the view file or other file .py for defining the view function to show/export selected report
  ```
-  from django_reportbroD.utils import convert_to_base64, convert_list_to_dict, to_dict
-  from django_reportbroD.reportcore import reportPDF, reportXLSX
+  from django_reportbroD.utils import convert_to_base64, convert_list_to_dict, to_dict, export_report_by_code, export_report_by_name, export_report_from_JSON
   
    def generar_pdf(request):
    
@@ -61,7 +60,44 @@ Using report
    
      code_report= 12
 
-     return reportPDF(request, code_report, data, file="reporte productos")
+     return export_report_by_code(template_code=7, data=data, extension="pdf")
+
+def generar_xls(request):
+   
+     products=Product.objects.all()
+   
+     #converting in a dictionary
+     productos=[to_dict(p) for p in products]
+   
+     imagen= convert_to_base64(products.first().imagen.url, 'jpg')
+   
+     data={
+   "productos":productos,
+   "imagen":imagen
+    }
+   
+     code_report= 12
+
+     return export_report_by_name(template_name="Plantilla de obrero" , data=data, extension="xlsx")
+
+
+def generar_reporte(request):
+   
+     products=Product.objects.all()
+   
+     #converting in a dictionary
+     productos=[to_dict(p) for p in products]
+   
+     imagen= convert_to_base64(products.first().imagen.url, 'jpg')
+   
+     data={
+   "productos":productos,
+   "imagen":imagen
+    }
+   
+     code_report= 12
+
+     return export_report_from_JSON(path_json="reporte.json", data=data, extension="xlsx")
  
    ```
 
