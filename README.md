@@ -60,7 +60,7 @@ Using report
    
      code_report= 12
 
-     return export_report_by_code(template_code=7, data=data, extension="pdf")
+     return export_report_by_code(template_code=code_report, data=data, extension="pdf")
 
 def generar_xls(request):
    
@@ -76,7 +76,6 @@ def generar_xls(request):
    "imagen":imagen
     }
    
-     code_report= 12
 
      return export_report_by_name(template_name="Plantilla de obrero" , data=data, extension="xlsx")
 
@@ -95,7 +94,6 @@ def generar_reporte(request):
    "imagen":imagen
     }
    
-     code_report= 12
 
      return export_report_from_JSON(path_json="reporte.json", data=data, extension="xlsx")
  
