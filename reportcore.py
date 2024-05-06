@@ -3,23 +3,24 @@ import json
 import uuid
 
 from django.db.models import Sum
-from django.http import HttpResponseBadRequest, HttpResponse, Http404, HttpResponseServerError
+from django.http import HttpResponseBadRequest, HttpResponse, HttpResponseServerError
 from django.shortcuts import render
 from django.utils.safestring import SafeString
 from django.views.decorators.clickjacking import xframe_options_exempt
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from reportbro import Report, ReportBroError
 from timeit import default_timer as timer
-
 from .models import ReportDefinition, ReportRequest
-from .utils import json_default, create_base_report_template
+from .base import json_default, create_base_report_template
+
+
 
 MAX_CACHE_SIZE = 1000 * 1024 * 1024  # keep max. 1000 MB of generated pdf files in db
 
 
 @ensure_csrf_cookie
 def edit(request, pk):
-    """Shows a page with ReportBro Designer to edit our albums report template.
+    """Shows a page with ReportBro Designer to edit our report template.
 
     The report template is loaded from the db (report_definition table),
     in case no report template exists a hardcoded template is generated in
@@ -219,31 +220,19 @@ def save(request, pk):
     return HttpResponse('ok')
 
 
-def reportPDF(request, code, data, file="reporte" ):
+
+
+def reportPDF(report_definition, data, file="reporte"):
     """Prints a pdf file with the available data. 
 
     """
-   
-
-    # NOTE: these params must match exactly with the parameters defined in the
-    # report definition in ReportBro Designer, check the name and type (Number, Date, List, ...)
-    # of those parameters in the Designer.
-    #params = dict(year=year, albums=list(get_albums(year)), current_date=datetime.datetime.now())
-    params=data
-
-    if ReportDefinition.objects.filter(pk=code)== None:
-        create_base_report_template(code)
+    # if ReportDefinition.objects.filter(pk=code)== None:
+    #     create_base_report_template(code)
     
 
-    report_definition = ReportDefinition.objects.get(pk=code)
     
-    if not report_definition:
-        return HttpResponseServerError('no report_definition available')
-    
-    
-
     try:
-        report_inst = Report(json.loads(report_definition.report_definition), params)
+        report_inst = Report(json.loads(report_definition), data)
         
         if report_inst.errors:
             # report definition should never contain any errors,
@@ -251,10 +240,10 @@ def reportPDF(request, code, data, file="reporte" ):
             raise ReportBroError(report_inst.errors[0])
         
         pdf_report = report_inst.generate_pdf()
-        
-        
+
         response = HttpResponse(bytes(pdf_report), content_type='application/pdf')
         response['Content-Disposition'] = 'inline; filename="{filename}"'.format(filename=f"{file}.pdf")
+        
         return response
     except ReportBroError as ex:
         return HttpResponseServerError('report error: ' + str(ex.error))
@@ -263,31 +252,15 @@ def reportPDF(request, code, data, file="reporte" ):
     
 
 
-def reportXLSX(request, code, data, file="reporte" ):
+def reportXLSX(report_definition, data, file="reporte" ):
     """Prints a xlsx file with the available data. 
 
     """
-   
-
-    # NOTE: these params must match exactly with the parameters defined in the
-    # report definition in ReportBro Designer, check the name and type (Number, Date, List, ...)
-    # of those parameters in the Designer.
-    #params = dict(year=year, albums=list(get_albums(year)), current_date=datetime.datetime.now())
-    params=data
-
-    if ReportDefinition.objects.filter(pk=code)== None:
-        create_base_report_template(code)
+    # if ReportDefinition.objects.filter(pk=code)== None:
+    #     create_base_report_template(code)
     
-
-    report_definition = ReportDefinition.objects.get(pk=code)
-    
-    if not report_definition:
-        return HttpResponseServerError('no report_definition available')
-    
-    
-
     try:
-        report_inst = Report(json.loads(report_definition.report_definition), params)
+        report_inst = Report(json.loads(report_definition), data)
         
         if report_inst.errors:
             # report definition should never contain any errors,

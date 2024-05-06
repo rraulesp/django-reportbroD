@@ -7,7 +7,7 @@
         <!-- begin navbar-header -->
         <div class="navbar-header d-flex align-items-center">
             <a href="javascript:void:(0)" class="mobile-toggle"><i class="ti ti-align-right"></i></a>
-            <a class="navbar-brand" href="/" >
+            <a class="navbar-brand" href="{% url 'reportbroD:list' %}" >
                 <img src="{% static 'assets/img/logo.png' %}" class="img-fluid logo-desktop" alt="logo" />
                 <img src="{% static 'assets/img/logo-icon.png' %}" class="img-fluid logo-mobile" alt="logo" />
             </a>
@@ -36,9 +36,31 @@
                     
                 </ul>
 
+                <ul class="navbar-nav nav-right ml-auto menuhidden">
+                    
+                    {% for elem in menu %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link " href="{{elem.url}}" id="navbarDropdown2" role="button"  aria-haspopup="true" aria-expanded="false" title="{{elem.label}}">
+                            <i class="{{elem.icon}}"></i>
+
+                            {% if active_page == elem.id %}
+                        <span class="notify">
+                            <span class="blink"></span>
+                <span class="dot"></span>
+                </span>
+                {% endif %}
+                        </a>
+                        
+                    </li>
+
+
+                    {% endfor %}
+                </ul>
+
             </div>
         </div>
         <!-- end navigation -->
     </nav>
     <!-- end navbar -->
 </header>
+

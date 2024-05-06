@@ -5,6 +5,7 @@ from django.views.generic import ListView, CreateView, UpdateView
 from .forms import ReportForm, ReportImpForm
 from django.urls import reverse_lazy
 from datetime import datetime
+from django.core.serializers import serialize
 from django.http import HttpResponse
 import json
 
@@ -82,6 +83,7 @@ def importreport(request):
         form=ReportImpForm(request.POST, request.FILES)
 
         if form.is_valid():
+           
             cd = request.FILES ['template']
             actual=datetime.now()
             
