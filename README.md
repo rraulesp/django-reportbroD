@@ -39,9 +39,10 @@ Using report
 -----------
 
 1. Create a app to using the view file or other file .py for defining the view function to show/export selected report
+ ```
   from django_reportbroD.utils import convert_to_base64, convert_list_to_dict, to_dict
-   from django_reportbroD.reportcore import reportPDF, reportXLSX
-   ```
+  from django_reportbroD.reportcore import reportPDF, reportXLSX
+  
    def generar_pdf(request):
    
      products=Product.objects.all()
