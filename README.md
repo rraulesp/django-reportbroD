@@ -5,7 +5,7 @@ Quick start
 -----------
 
 1. Add "reportbroD" to your INSTALLED_APPS setting like this:
-
+```
     INSTALLED_APPS = [
    
 ...
@@ -13,16 +13,18 @@ Quick start
 
    ]
 
+```
 2. Add 'django_reportbroD.menus.get_menu_items' to your OPTIONS.context_processors in your TEMPLATES settings. This enables the use of menu for the installed report app. 
-
+ ```
         'OPTIONS': {
    
-            'context_processors': [...,'django_reportbroD.menus.get_menu_items'
+            'context_processors': [...,'
+django_reportbroD.menus.get_menu_items'
    
             ],
             
         }
-
+```
 
 3. Include the reportbroD URLconf in your project urls.py like this:
 
