@@ -8,7 +8,7 @@ Quick start
 ```
     INSTALLED_APPS = [
    
-...
+                ... ,
    'django_reportbroD.apps.ReportbrodConfig',
 
    ]
@@ -18,8 +18,8 @@ Quick start
  ```
         'OPTIONS': {
    
-            'context_processors': [...,'
-django_reportbroD.menus.get_menu_items'
+            'context_processors': [...,
+'django_reportbroD.menus.get_menu_items'
    
             ],
             
@@ -30,7 +30,7 @@ django_reportbroD.menus.get_menu_items'
 
    path("reportbroD/", include("django_reportbroD.urls", namespace="reportbroD")),
 
-4. Run ``python manage.py makemigrations`` and ``python manage.py migrate`` to create the models and to migrating to data base.
+4. Run ``python manage.py migrate`` to create the models and to migrating to data base.
 
 5. Start the development server.
 
