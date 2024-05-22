@@ -222,15 +222,15 @@ def save(request, pk):
 
 
 
-def reportPDF(report_definition, data, file="reporte"):
+def reportPDF(report_definition, data, file="reporte", download=False):
     """Prints a pdf file with the available data. 
 
     """
     # if ReportDefinition.objects.filter(pk=code)== None:
     #     create_base_report_template(code)
     
-
-    
+#attachment
+    view_mode="attachment" if download else "inline"
     try:
         report_inst = Report(json.loads(report_definition), data)
         
@@ -242,7 +242,7 @@ def reportPDF(report_definition, data, file="reporte"):
         pdf_report = report_inst.generate_pdf()
 
         response = HttpResponse(bytes(pdf_report), content_type='application/pdf')
-        response['Content-Disposition'] = 'inline; filename="{filename}"'.format(filename=f"{file}.pdf")
+        response['Content-Disposition'] = '{view_mode}; filename="{filename}"'.format(filename=f"{file}.pdf", view_mode=view_mode)
         
         return response
     except ReportBroError as ex:
@@ -252,13 +252,12 @@ def reportPDF(report_definition, data, file="reporte"):
     
 
 
-def reportXLSX(report_definition, data, file="reporte" ):
+def reportXLSX(report_definition, data, file="reporte"):
     """Prints a xlsx file with the available data. 
 
     """
     # if ReportDefinition.objects.filter(pk=code)== None:
     #     create_base_report_template(code)
-    
     try:
         report_inst = Report(json.loads(report_definition), data)
         
@@ -270,7 +269,7 @@ def reportXLSX(report_definition, data, file="reporte" ):
         pdf_report = report_inst.generate_xlsx()
         
         response = HttpResponse(bytes(pdf_report), content_type='application/xlsx')
-        response['Content-Disposition'] = 'inline; filename="{filename}"'.format(filename=f"{file}.xlsx")
+        response['Content-Disposition'] = 'inline ; filename="{filename}"'.format(filename=f"{file}.xlsx")
         return response
     except ReportBroError as ex:
         return HttpResponseServerError('report error: ' + str(ex.error))

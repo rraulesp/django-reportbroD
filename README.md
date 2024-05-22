@@ -1,10 +1,12 @@
 # django-reportbroD
-A Django app to create and use ReportBro reports with a sample admin.
+A Django app to create, use and export ReportBro reports (free version) with a admin. 
+
+![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white) ![lib](https://badgen.net/badge/Export/PDF-XLSX/red?) ![JS](https://badgen.net/badge/Js/Reportbro_Designer/blue?icon=doc)  ![lib](https://badgen.net/badge/Package/Reportbro-lib/red?icon=doc)
 
 Quick start
 -----------
 
-1. Add "reportbroD" to your INSTALLED_APPS setting like this:
+1. Add "django_reportbroD" to your INSTALLED_APPS setting like this:
 ```
     INSTALLED_APPS = [
    
@@ -14,7 +16,17 @@ Quick start
    ]
 
 ```
-2. Add 'django_reportbroD.menus.get_menu_items' to your OPTIONS.context_processors in your TEMPLATES settings. This enables the use of menu for the installed report app. 
+2. Add LocaleMiddleware to your MIDDLEWARE list in your settings. This allows the reporting app to have translation in Spanish and English. 
+ ```
+        MIDDLEWARE = [
+    'django.middleware.locale.LocaleMiddleware',
+    ...
+            ],
+            
+        
+```
+
+3. Add 'django_reportbroD.menus.get_menu_items' to your OPTIONS.context_processors in your TEMPLATES settings. This enables the use of menu for the installed report app. 
  ```
         'OPTIONS': {
    
@@ -26,22 +38,26 @@ Quick start
         }
 ```
 
-3. Include the reportbroD URLconf in your project urls.py like this:
+4. Include the reportbroD URLconf in your project urls.py and the i18n urls like this:
 
-   path("reportbroD/", include("django_reportbroD.urls", namespace="reportbroD")),
+```
+   path("reportbroD/", include("django_reportbroD.urls" namespace="reportbroD")),  
+   path('i18n/', include('django.conf.urls.i18n')),
+```
 
-4. Run ``python manage.py migrate reportbroD`` to create the models and to migrating to data base.
 
-5. Start the development server.
+5.  Run ``python manage.py migrate`` to create the models and to migrating to data base.
 
-6. Visit the ``/reportbroD/`` URL to create/update/edit/duplicate/remove reports.
+6. Start the development server.
+
+7. Visit the ``/reportbroD/`` URL to create/update/edit/duplicate/remove reports.
 
 
 Using report
 -----------
 
 1. Create a app to using the view file or other file .py for defining the view function to show/export selected report
- ```
+ ```   
   from django_reportbroD.utils import convert_to_base64, convert_list_to_dict, to_dict, export_report_by_code, export_report_by_name, export_report_from_JSON
   
    def generar_pdf(request):
@@ -99,3 +115,66 @@ def generar_reporte(request):
  
    ```
 
+
+2. Include a report into Django Admin through a action function.
+
+```
+
+# admin.py 
+from .views import reporte
+...
+
+def reportbro(modeladmin, request, queryset):
+    w=queryset.first()
+    if w:
+        return reporte(request, w.code)
+
+reportbro.short_description="Working Report"
+
+@admin.register(Working)
+class WorkAdmin(admin.ModelAdmin):
+    list_display = ("worker","date", "hours","payhorary", "descount", "pay_extra", "pay" )
+    list_filter=["date", "worker"]
+    list_display_links = ("worker","date" )
+    actions=[reportbro]
+```
+
+> **Parameter >>** **download = True**
+>
+>In this case,  download parameter from export_report_by_code, export_report_by_name and export_report_from_JSON functions must be "True" to avoid any errors when the report format is "pdf".
+
+```
+#views.py 
+from django_reportbroD.utils import convert_to_base64, convert_list_to_dict, to_dict, export_report_by_code, export_report_by_name, export_report_from_JSON
+  ...
+
+def reporte(request, code):
+
+    worker=Worker.objects.filter(code=code).first()
+    workings=Working.objects.filter(worker=worker)
+    
+    asistencia= [
+{
+    "date": w.date.date,
+    "payhorary" : w.payhorary,
+    "descount" : w.descount,
+    "pay_extra" : w.pay_extra,
+    "pay" : w.pay,
+    
+    }
+for w in workings
+    ]
+
+    trabajador=to_dict(worker)
+    trabajador["horary"]=worker.horary.horario()
+    trabajador["area"]=worker.area.Area()
+
+
+    data={
+        "worker":trabajador,
+        "working": asistencia,
+        "date":datetime.datetime.now()
+    }
+
+    return export_report_by_code(template_code=7, data=data, file="nuevo", download=True)
+```

@@ -1,0 +1,346 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-13 07:17-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
+"1 : 2;\n"
+
+msgid "lang_change"
+msgstr "Cambio de idioma"
+
+msgid "app"
+msgstr "Administración de Reportes"
+
+msgid "title"
+msgstr "Reportes"
+
+msgid "nameC"
+msgstr "Nombre"
+
+msgid "codec"
+msgstr "Código de uso"
+
+msgid "updatec"
+msgstr "Modificado"
+
+msgid "descc"
+msgstr "Descripción"
+
+msgid "btnok"
+msgstr "Aceptar"
+
+msgid "actions"
+msgstr "Acciones"
+
+msgid "template"
+msgstr "Plantilla"
+
+msgid "back_list"
+msgstr "Volver a la lista"
+
+msgid "action_add"
+msgstr "Agregar reporte"
+
+msgid "action_template"
+msgstr "Editar plantilla del reporte"
+
+msgid "action_delete"
+msgstr "Eliminar reporte"
+
+msgid "action_duplicate"
+msgstr "Duplicar reporte"
+
+msgid "action_export"
+msgstr "Exportar reporte"
+
+msgid "action_import"
+msgstr "Importar reporte"
+
+msgid "action_page"
+msgstr "Página"
+
+msgid "action_prev"
+msgstr "Anterior"
+
+msgid "action_next"
+msgstr "Siguiente"
+
+msgid "msg_noreport"
+msgstr "No se encuentra registrado ningún reporte"
+
+#pagina de registrar reporte
+msgid "title_add"
+msgstr "Registro de nuevo Reporte"
+
+msgid "title_add1"
+msgstr "Creando Reporte"
+
+msgid "subtitle_add"
+msgstr "Nuevo"
+
+msgid "unique"
+msgstr "Ya existe un reporte con el mismo nombre."
+
+#Placeholder de los formularios
+msgid "holdern"
+msgstr "Entre el nombre del reporte."
+
+msgid "holderd"
+msgstr "Provee una reseña sobre la función del reporte."
+
+msgid "holderf"
+msgstr "Selecciona la plantilla JSON"
+
+
+#dialogo de eliminar reporte
+msgid "title_delete"
+msgstr "Eliminar reporte"
+
+msgid "ask_delete"
+msgstr "Deseas eliminar el reporte"
+
+msgid "action_close"
+msgstr "Cerrar"
+
+
+#dialogo de importar reporte
+msgid "title_import"
+msgstr "Importar reporte"
+
+msgid "warn_import"
+msgstr "El fichero debe ser de tipo .json"
+
+
+#pagina de editar reporte
+msgid "title_edit"
+msgstr "Editando Reporte"
+
+msgid "template_edit"
+msgstr "Editar plantilla"
+
+
+#pagina de importar reporte
+
+
+msgid "title_import1"
+msgstr "Importar"
+
+msgid "especif"
+msgstr "Plantilla (Formato en JSON)"
+
+msgid "btn_upload"
+msgstr "Subir"
+
+msgid "not_format"
+msgstr "El archivo no posee el formato adecuado."
+
+#enlaces del menu
+
+msgid "options"
+msgstr "Opciones Principales"
+
+msgid "opt1"
+msgstr "Documentación de Reportbro Admin"
+
+msgid "opt2"
+msgstr "Tutorial del Diseñador de ReportBro"
+
+msgid "opt3"
+msgstr "Administración del Sitio"
+
+msgid "opt4"
+msgstr "inicio"
+
+
+#Documentacion Page
+
+msgid "titledoc"
+msgstr "Documentación"
+
+msgid "titledoc1"
+msgstr "Documentación de ReportBro Admin"
+
+msgid "seccion1"
+msgstr "Qué es Reportbro"
+
+msgid "seccion2"
+msgstr "Compatibilidad"
+
+msgid "seccion3"
+msgstr "Especificaciones"
+
+
+#Seccion 1
+
+msgid "tem1"
+msgstr "Librería del Diseñador de ReportBro"
+
+msgid "tem1_parr1"
+msgstr "Designer es un plugin JavaScript que se puede integrar en su aplicación web.Aunque esto requiere un poco más de trabajo al principio, tener una herramienta de diseño de plantillas integrada tiene bastantes beneficios como descubrirás leyendo. La instalación es sencilla incluyendo algunas librerías JavaScript e inicializando el Diseñador con algo de código HTML y JavaScript."
+
+msgid "tem1_parr2"
+msgstr "Está optimizado para informes sencillos, es decir, para mostrar datos (texto, datos tabulares o imágenes) exactamente como se definen en una plantilla de diseño. Todos los parámetros se pasan directamente al informe y, por lo tanto, <b>ReportBro </b> no requiere conocimientos de SQL (u otro lenguaje de consulta) para crear un informe. Por el contrario, el uso de las mismas solicitudes de datos en la aplicación web subyacente y para la generación de informes elimina el riesgo de posibles incoherencias entre los datos mostrados en la pantalla y el informe impreso."
+
+
+msgid "tem1_parr3"
+msgstr "<b> ReportBro</b> permite diseñar fácil y rápidamente informes con un diseño perfecto. Imprimir la página actual en el pie de página es tan sencillo como insertar variables predefinidas para la página actual y el recuento total de páginas. Incluso para generar salidas Excel no se necesita ninguna configuración adicional debido a que ReportBro tiene una estructura muy clara es fácil de aprender."
+
+
+msgid "tem2"
+msgstr "Libreria reportbro-lib"
+
+msgid "tem2_parr1"
+msgstr "<b> ReportBro-lib</b> es una librería para generar informes PDF y XLSX escrita en python para su uso conjunto con <b>Django</b>. Las plantillas de informes se pueden crear con <b>ReportBro Designer</b>, un plugin Javascript que se puede integrar en su aplicación web."
+
+msgid "tem3"
+msgstr "Administrador de ReportBro"
+
+msgid "tem3_parr1"
+msgstr "<b>Proyecto libre que une las librerías JavaScript de ReportBro designer y la libreria reportbro-lib.</b>"
+
+
+msgid "tem3_parr2"
+msgstr "Este proyecto constituye una app de django que permite la administración y fácil integración de todas las librerías referentes a ReportBro."
+
+
+
+#Seccion 2
+
+msgid "tem21"
+msgstr "Librerías Utilizadas"
+
+msgid "tem21_1parr1"
+msgstr "Javascript del Diseñador de ReportBro"
+
+msgid "tem21_1parr2"
+msgstr "Se utilizó la liberia correpondiente a <b>ReportBro Designer</b>en su versión gratuita, por lo tanto solo podrá ser utilizadas las funciones disponibles de esa versión."
+
+msgid "tem21_2parr1"
+msgstr "Referencia de código"
+
+msgid "tem21_2parr2"
+msgstr "<b>Esta app es una versión mejorada del ejemplo de Albumsreport creada para ReportBro Designer.</b>"
+
+msgid "tem21_2parr3"
+msgstr "Versión original disponible en "
+
+
+msgid "tem21_3parr1"
+msgstr "Reportbro-lib"
+
+msgid "tem21_3parr2"
+msgstr " Genera reportes pdf y xlsx ,  Soporta (repeticiones)cabecera y pie de página,  Permite formatos predefinidos y propios para las páginas del reporte, Utiliza los elementos: Textos, línea, imagen, barcodes, tablas, ruptura de páginas y secciones , Permite el estilizado de textos y elementos y puede evaluar expresiones y definir condicionales."
+
+
+msgid "tem22"
+msgstr "Bases de Datos Compatibles"
+
+msgid "tem22_parr1"
+msgstr "<b> Es compatible con todas las bases de datos ajustables para Django: SQLite, Postgres, MySQL, etc</b>"
+
+
+#Seccion 3
+
+msgid "esp1"
+msgstr "Formato De Datos"
+
+msgid "esp1_parr"
+msgstr "Los reportes de ReportBro aceptan los datos mediante un diccionario o un contexto (como una función vista). Cada parámetro del contexto, por lo tanto, se define con su nombre (dato irrepetible y que debe coincidir con el definido durante el diseño del reporte) y su información (un texto, número, fecha, imagen, lista simple de elementos o de objetos.) Los Objetos dentro de una lista se deben definir como un diccionario para que el Reporte puede reconocer sus atributos."
+
+msgid "esp2"
+msgstr "Modos De Exportación"
+
+msgid "exp1"
+msgstr "Exportación por Código"
+
+msgid "exp2"
+msgstr "Exportación por Nombre"
+
+msgid "exp3"
+msgstr "Exportación usando JSON"
+
+msgid "exp1_desc"
+msgstr "<b>export_report_by_code(template_code, data, extension='pdf', file='reporte')</b>:  Esta función permite que el programador pueda renderizar un reporte (en la base de datos) usando principalmente su código (de registro que siempre es único) y los datos pasados como contexto."
+
+msgid "exp2_desc"
+msgstr "<b>export_report_by_name(template_code, data, extension='pdf', file='reporte')</b>:  Esta función permite que el programador pueda renderizar un reporte (en la base de datos) usando principalmente su nombre (de registro que siempre será único) y los datos pasados como contexto."
+
+msgid "exp3_desc"
+msgstr "<b>export_report_from_JSON(path_json, data, extension='pdf', file='reporte')</b>:  Esta función permite que el programador pueda renderizar un reporte exportado en un fichero JSON independiente usando su ruta específica y los datos pasados como contexto."
+
+
+#tabla de parametros
+msgid "param"
+msgstr "Parámetros"
+
+msgid "template_code"
+msgstr "Código de uso del reporte que fue insertado en la base de datos."
+
+msgid "template_name"
+msgstr "Nombre del reporte que fue insertado en la base de datos."
+
+msgid "path_json"
+msgstr "Ruta específica del archivo con formato JSON. (Este fichero se genera con la función de 'Exportación' de esta app). Se puede usar su path relativo según la estructura del proyecto."
+
+
+#parametros que son comunes en la tabla
+
+msgid "data"
+msgstr "Contexto pasado como un diccionario. Esta constituye la información que será renderizada en el reporte. Cada nombre de las variables del contexto debe coincidir con su equivalente en los parámetros definidos en el diseño de la plantilla del modelo."
+
+msgid "extension"
+msgstr "Parámetro que solo admite dos valores de entrada (pdf - xlsx). Por defecto siempre es pdf. Es el formato con el cual será exportado el reporte."
+
+msgid "file"
+msgstr "Nombre del fichero del reporte al ser exportado. Por defecto se establece como 'reporte'."
+
+msgid "download"
+msgstr "Si la variable está en True, el reporte en pdf será descargado directamente sin ser visualizado, en caso contrario el pdf estará mostrado."
+
+
+#funciones de formato
+msgid "format"
+msgstr "Funciones De Formato"
+
+msgid "format1"
+msgstr "Convertir a lista"
+
+msgid "format2"
+msgstr "Convertir a un diccionario"
+
+msgid "format3"
+msgstr "Ajustar imagen"
+
+msgid "convert_list_to_dict"
+msgstr " <b>convert_list_to_dict()</b>: Esta función auxiliar recibe como parámetro una Query realizada con un Model de base de datos y lo convierte en una lista o colección de diccionarios para ser utilizada por un reporte. Solo permite la conversión de aquellos campos simples."
+
+msgid "to_dict"
+msgstr "<b>to_dict()</b>: Esta función auxiliar puede convertir cada instancia de un clase Model pasada como parámetro en un diccionario de clave-valor entendible por el reporte. Solo permite la conversión de aquellos campos simples."
+
+msgid "convert_to_base64"
+msgstr "<b>convert_to_base64(path, format_image)</b>: Esta función puede ser utilizada para convertir una imagen cualquiera a formato base 64. Este formato es necesario para que la imagen se muestre sin problemas en el reporte."
+
+msgid "path"
+msgstr "Ruta específica de la imagen. Solo se puede usar su path relativo según la estructura del proyecto."
+
+msgid "format_image"
+msgstr "Formato de la imagen, solo soportable .png y .jpg"
+
+
+#template
+msgid "report_temp"
+msgstr "Editando plantilla del reporte"

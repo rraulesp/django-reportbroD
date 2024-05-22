@@ -1,5 +1,6 @@
 {% extends 'bases/base.html'%}
 {% load static %}
+{% load i18n %} 
 {% block content %}
                 <div class="app-main" id="main">
                     <!-- begin container-fluid -->
@@ -10,7 +11,7 @@
                                 <!-- begin page title -->
                                 <div class="d-block d-sm-flex flex-nowrap align-items-center">
                                     <div class="page-title mb-2 mb-sm-0">
-                                        <h1>Documentación</h1>
+                                        <h1>{% trans "titledoc" %}</h1>
                                     </div>
                                     <div class="ml-auto d-flex align-items-center">
                                         <nav>
@@ -18,7 +19,7 @@
                                                 <li class="breadcrumb-item">
                                                     <a href="/"><i class="ti ti-home"></i></a>
                                                 </li>
-                                                <li class="breadcrumb-item active text-primary" aria-current="page">Documentación de ReportBro Admin</li>
+                                                <li class="breadcrumb-item active text-primary" aria-current="page">{% trans "titledoc1" %}</li>
                                             </ol>
                                         </nav>
                                     </div>
@@ -35,15 +36,15 @@
                                         <div class="tab nav-center">
                                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                                 <li class="nav-item">
-                                                    <a class="nav-link active show" id="research-tab" data-toggle="tab" href="#research" role="tab" aria-controls="research" aria-selected="true"> Qué es Reportbro </a>
+                                                    <a class="nav-link active show" id="research-tab" data-toggle="tab" href="#research" role="tab" aria-controls="research" aria-selected="true"> {% trans "seccion1" %}</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" id="design-tab" data-toggle="tab" href="#design" role="tab" aria-controls="design" aria-selected="false"> Compatibilidad
+                                                    <a class="nav-link" id="design-tab" data-toggle="tab" href="#design" role="tab" aria-controls="design" aria-selected="false"> {% trans "seccion2" %}
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" id="develop-tab" data-toggle="tab" href="#develop" role="tab" aria-controls="develop" aria-selected="false">
-                                                       Especificaciones</a>
+                                                       {% trans "seccion3" %}</a>
                                                 </li>
                                                 
                                             </ul>
@@ -53,25 +54,14 @@
                                                         <div class="mb-2 acd-group">
                                                             <div class="card-header bg-primary rounded-0">
                                                                 <h5 class="mb-0">
-                                                                    <a href="#collapse" class="btn-block text-white text-left acd-heading" data-toggle="collapse">1. Libreria ReportBro Designer </a>
+                                                                    <a href="#collapse" class="btn-block text-white text-left acd-heading" data-toggle="collapse">1. {% trans "tem1" %} </a>
                                                                 </h5>
                                                             </div>
                                                             <div id="collapse" class="collapse show" data-parent="#accordionsimplefill">
                                                                 <div class="card-body" style="text-align: justify;">
-                                                                    <p><b>ReportBro</b>
-                                                                     Designer es un plugin JavaScript que se puede integrar en su aplicación web.
-                                                                         Aunque esto requiere un poco más de trabajo al principio, tener una herramienta de 
-                                                                         diseño de plantillas integrada tiene bastantes beneficios como descubrirás leyendo. 
-                                                                        La instalación es sencilla incluyendo algunas librerías JavaScript e inicializando 
-                                                                        el Diseñador con algo de código HTML y JavaScript.</p>
-                                                                        <p>Está optimizado para informes sencillos, es decir, para mostrar datos (texto, datos tabulares o imágenes) 
-                                                                            exactamente como se definen en una plantilla de diseño. 
-                                                                            Todos los parámetros se pasan directamente al informe y, por lo tanto, <b>ReportBro </b> no requiere conocimientos de SQL (u otro lenguaje de consulta) para crear un informe. Por el contrario, el uso de las mismas solicitudes de datos en la aplicación web subyacente y para la generación de informes elimina el riesgo de posibles incoherencias entre los datos mostrados en la pantalla y el informe impreso.
-                                                                        </p>
-                                                                        <p>  <b> ReportBro</b>
-                                                                         permite diseñar fácil y rápidamente informes con un diseño perfecto. Imprimir la página actual en el pie de página es tan sencillo como insertar variables predefinidas para la página actual y el recuento total de páginas.
-                                                                             Incluso para generar salidas Excel no se necesita ninguna configuración adicional debido a que ReportBro tiene una estructura muy clara es fácil de aprender.
-                                                                            
+                                                                    <p>{% trans "tem1_parr1" %}</p>
+                                                                        <p>{% trans "tem1_parr2" %}   </p>
+                                                                        <p>  {% trans "tem1_parr3" %}
                                                                            </p>
 
                                                                 </div>
@@ -80,14 +70,14 @@
                                                         <div class="mb-2 acd-group">
                                                             <div class="card-header rounded-0 bg-primary">
                                                                 <h5 class="mb-0">
-                                                                    <a href="#collapse2" class="btn-block text-white text-left acd-heading collapsed" data-toggle="collapse">2. Libreria reportbro-lib
+                                                                    <a href="#collapse2" class="btn-block text-white text-left acd-heading collapsed" data-toggle="collapse">2. {% trans 'tem2' %}
                                                                         </a>
                                                                 </h5>
                                                             </div>
                                                             <div id="collapse2" class="collapse" data-parent="#accordionsimplefill">
                                                                 <div class="card-body">
-                                                                    <p> <b> ReportBro-lib</b> es una librería para generar informes PDF y XLSX escrita en python para su uso conjunto con <b>Django</b>. 
-                                                                        Las plantillas de informes se pueden crear con <b>ReportBro Designer</b>, un plugin Javascript que se puede integrar en su aplicación web.</p>
+                                                                    <p> {% trans "tem2_parr1" %}
+                                                                    </p>
 
                                                                 </div>
                                                             </div>
@@ -95,13 +85,13 @@
                                                         <div class="acd-group border-bottom-0">
                                                             <div class="card-header rounded-0 bg-primary">
                                                                 <h5 class="mb-0">
-                                                                    <a href="#collapse3" class="btn-block text-white text-left acd-heading collapsed" data-toggle="collapse">3.  ReportBro Admin</a>
+                                                                    <a href="#collapse3" class="btn-block text-white text-left acd-heading collapsed" data-toggle="collapse">3. {% trans "tem3" %}</a>
                                                                 </h5>
                                                             </div>
                                                             <div id="collapse3" class="collapse" data-parent="#accordionsimplefill">
                                                                 <div class="card-body">
-                                                                    <p><b>Proyecto libre que une las librerías JavaScript de ReportBro designer y la libreria reportbro-lib.</b></p>
-                                                                    <p>Este proyecto constituye una app de django que permite la administración y fácil integración de todas las librerías referentes a ReportBro.</p>
+                                                                    <p>{% trans "tem3_parr1" %}</p>
+                                                                    <p>{% trans "tem3_parr2" %}</p>
 
                                                                 </div>
                                                             </div>
@@ -115,7 +105,7 @@
                                                         <div class="mb-2 acd-group">
                                                             <div class="card-header bg-primary rounded-0">
                                                                 <h5 class="mb-0">
-                                                                    <a href="#collapse" class="btn-block text-white text-left acd-heading" data-toggle="collapse">1. Librerias utilizadas </a>
+                                                                    <a href="#collapse" class="btn-block text-white text-left acd-heading" data-toggle="collapse">1. {% trans "tem21" %}</a>
                                                                 </h5>
                                                             </div>
                                                             <div id="collapse" class="collapse show" data-parent="#accordionsimplefill">
@@ -134,43 +124,35 @@
                                                                                         <div class="list-group">
                                                                                             <a href="javascript:void(0)" class="list-group-item list-group-item-action flex-column align-items-start active">
                                                                                                 <div class="d-flex w-100 justify-content-between">
-                                                                                                    <h5 class="mb-1 text-white">ReportBro Designer JS</h5>
+                                                                                                    <h5 class="mb-1 text-white">{% trans "tem21_1parr1" %}</h5>
                                                                                                     
                                                                                                 </div>
-                                                                                                <p class="text-white d-sm-none"><small>Versión del 2024</small></p>
-                                                                                                <p class="mb-1 text-white">Se utilizó la liberia correpondiente a <b>ReportBro Designer</b>
-                                                                                                    en su versión gratuita, por lo tanto solo podrá ser utilizadas las funciones disponibles de esa versión. 
-                                                                                                      </p>
+                                                                                                
+                                                                                                <p class="mb-1 text-white">{% trans "tem21_1parr2" %}</p>
                                                                                                
                                         
                                                                                             </a>
                                                                                             <div href="javascript:void(0)" class="list-group-item list-group-item-action flex-column align-items-start">
                                                                                                 <div class="d-flex w-100 justify-content-between">
-                                                                                                    <h5 class="mb-1">Referencia de código</h5>
+                                                                                                    <h5 class="mb-1">{% trans "tem21_2parr1" %}</h5>
                                                                                                     
                                                                                                 </div>
                                                                                                 
-                                                                                                <p class="mb-1"><b>Esta app es una versión mejorada del ejemplo de Albumsreport creada para ReportBro Designer.</b></p>
-                                                                                                <b class="text-muted">Versión original disponible en <a href="https://github.com/jobsta/albumapp-django">AQUÍ</a> .</b>
+                                                                                                <p class="mb-1">{% trans "tem21_2parr2" %}</p>
+                                                                                                <b class="text-muted">{% trans "tem21_2parr3" %}  <a href="https://github.com/jobsta/albumapp-django">albumapp-django</a></b>
                                                                                                
                                                                                             </div>
                                                                                             
                                                                                             <div href="javascript:void(0)" class="list-group-item list-group-item-action flex-column align-items-start">
                                                                                                 <div class="d-flex w-100 justify-content-between">
-                                                                                                    <h5 class="mb-1">Reportbro-lib</h5>
+                                                                                                    <h5 class="mb-1">{% trans "tem21_3parr1" %}</h5>
                                                                                                 
                                                                                                 </div>
                                                                                                
-                                                                                                <p class="mb-1">Compatible con Python >= 3.7 , 
+                                                                                                <p class="mb-1">
 
-                                                                                                    Genera reportes pdf y xlsx , 
-                                                                                                    Soporta (repeticiones)cabecera y pie de página, 
-
-                                                                                                    Permite formatos predefinidos y propios para las páginas del reporte, 
-                                                                                                    
-                                                                                                    Utiliza los elementos: Textos, línea, imagen, barcodes, tablas, ruptura de páginas y secciones , 
-                                                                                                    Permite el estilizado de textos y elementos y puede evaluar expresiones, definir condicionales y formatos de
-                                                                                                     </p>
+                                                                                                    {% trans "tem21_3parr2" %}
+                                                                                                </p>
                                                                                                
                                                                                             
                                                                                                
@@ -185,13 +167,13 @@
                                                         <div class="mb-2 acd-group">
                                                             <div class="card-header rounded-0 bg-primary">
                                                                 <h5 class="mb-0">
-                                                                    <a href="#collapse2" class="btn-block text-white text-left acd-heading collapsed" data-toggle="collapse">2. Bases de Datos Compatibles
+                                                                    <a href="#collapse2" class="btn-block text-white text-left acd-heading collapsed" data-toggle="collapse">2. {% trans "tem22" %}
                                                                         </a>
                                                                 </h5>
                                                             </div>
                                                             <div id="collapse2" class="collapse" data-parent="#accordionsimplefill">
                                                                 <div class="card-body">
-                                                                    <p> <b> Es compatible con todas las bases de datos ajustables para Django: SQLite, Postgres, MySQL, etc</b> </p>
+                                                                    <p> {% trans "tem22_parr1" %} </p>
 
                                                                 </div>
                                                             </div>

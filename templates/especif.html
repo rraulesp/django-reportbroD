@@ -1,15 +1,14 @@
 {% load static %}
 
+{% load i18n %} 
+
 <div class="row" >
     <div class="card text-white bg-info mb-3">
         <div class="card-header">
-            <h4 class="card-title text-white">Formato de datos</h4>
+            <h4 class="card-title text-white">{% trans "esp1" %}</h4>
         </div>
         <div class="card-body">
-            <p class="card-text text-white">Los reportes de ReportBro aceptan los datos mediante un diccionario o un contexto (como una función vista). 
-                Cada parámetro del contexto, por lo tanto, se define con su nombre (dato irrepetible y que debe coincidir con el definido durante el diseño del reporte) 
-                y su información (un texto, número, fecha, imagen, lista simple de elementos o de objetos.) 
-                Los Objetos dentro de una lista se deben definir como un diccionario para que el Reporte puede reconocer sus atributos.</p>
+            <p class="card-text text-white">{% trans "esp1_parr" %}</p>
         </div>
     </div>
 
@@ -20,33 +19,32 @@
         <div class="card card-statistics">
             <div class="card-header">
                 <div class="card-heading">
-                    <h4 class="card-title"> Modos de Exportación  </h4>
+                    <h4 class="card-title"> {% trans "esp2" %}  </h4>
                 </div>
             </div>
             <div class="card-body">
                 <div class="tab tab-vertical">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active show" id="exportcode-tab" data-toggle="tab" href="#exportcode" role="tab" aria-controls="exportcode" aria-selected="true"> Exportación por código </a>
+                            <a class="nav-link active show" id="exportcode-tab" data-toggle="tab" href="#exportcode" role="tab" aria-controls="exportcode" aria-selected="true"> {% trans "exp1" %} </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="exportname-tab" data-toggle="tab" href="#exportname" role="tab" aria-controls="exportname" aria-selected="false"> Exportación por nombre </a>
+                            <a class="nav-link" id="exportname-tab" data-toggle="tab" href="#exportname" role="tab" aria-controls="exportname" aria-selected="false"> {% trans "exp2" %}  </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="exportjson-tab" data-toggle="tab" href="#exportjson" role="tab" aria-controls="exportjson" aria-selected="false">Exportación usando JSON </a>
+                            <a class="nav-link" id="exportjson-tab" data-toggle="tab" href="#exportjson" role="tab" aria-controls="exportjson" aria-selected="false">{% trans "exp3" %} </a>
                         </li>
                        
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane fade active show" id="exportcode" role="tabpanel" aria-labelledby="exportcode-tab">
                            
-                            <p><b>export_report_by_code(template_code, data, extension="pdf", file="reporte")</b>:  Esta función permite que el programador pueda renderizar un reporte (en la base de datos) usando principalmente su código (de registro que siempre es 
-                                único) y los datos pasados como contexto.</p>
+                            <p>{% trans 'exp1_desc' %}</p>
                        
                             <div class="card card-statistics">
                                 <div class="card-header">
                                     <div class="card-heading">
-                                        <h4 class="card-title">Parámetros</h4>
+                                        <h4 class="card-title">{% trans "param" %}</h4>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -55,8 +53,8 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
-                                                    <th scope="col">Nombre</th>
-                                                    <th scope="col">Descripción</th>
+                                                    <th scope="col">{% trans "nameC" %}</th>
+                                                    <th scope="col">{% trans "descc" %}</th>
                                                    
                                                 </tr>
                                             </thead>
@@ -66,8 +64,7 @@
                                                     <td>template_code</td>
                                                     <td>
                                                     <p>
-                                                        Código de uso del reporte que fue insertado en la base de datos. 
-
+                                                       {% trans "template_code" %}
                                                     </p>
                                                         
                                                     </td>
@@ -77,8 +74,7 @@
                                                     <th scope="row">2</th>
                                                     <td>data</td>
                                                     <td> <p>
-                                                        Contexto pasado como un diccionario. Esta constituye la información que será renderizada en el reporte. Cada nombre de las variables del contexto debe coincidir con su equivalente en los parámetros definidos
-                                                        en el diseño de la plantilla del modelo.
+                                                       {% trans "data" %}
                                                     </p></td>
                                                     
                                                 </tr>
@@ -86,7 +82,7 @@
                                                     <th scope="row">3</th>
                                                     <td>extension</td>
                                                     <td><p>
-                                                        Parámetro que solo admite dos valores de entrada (pdf - xlsx). Por defecto siempre es pdf. Es el formato con el cual será exportado el reporte.
+                                                        {% trans "extension" %}
                                                     </p></td>
                                                    
                                                 </tr>
@@ -96,7 +92,19 @@
                                                     <td>file</td>
                                                     <td>
                                                     <p>
-                                                       Nombre del fichero del reporte al ser exportado. Por defecto se establece como "reporte".
+                                                        {% trans "file" %}
+                                                    </p>
+                                                        
+                                                    </td>
+                                                   
+                                                </tr>
+
+                                                <tr>
+                                                    <th scope="row">5</th>
+                                                    <td>download</td>
+                                                    <td>
+                                                    <p>
+                                                        {% trans "download" %}
                                                     </p>
                                                         
                                                     </td>
@@ -110,13 +118,12 @@
                        
                         </div>
                         <div class="tab-pane fade" id="exportname" role="tabpanel" aria-labelledby="exportname-tab">
-                            <p><b>export_report_by_name(template_code, data, extension="pdf", file="reporte")</b>:  Esta función permite que el programador pueda renderizar un reporte (en la base de datos) usando principalmente su nombre (de registro que siempre será 
-                                único) y los datos pasados como contexto.</p>
+                            <p>{% trans 'exp2_desc' %}</p>
                        
                             <div class="card card-statistics">
                                 <div class="card-header">
                                     <div class="card-heading">
-                                        <h4 class="card-title">Parámetros</h4>
+                                        <h4 class="card-title">{% trans "param" %}</h4>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -125,8 +132,8 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
-                                                    <th scope="col">Nombre</th>
-                                                    <th scope="col">Descripción</th>
+                                                    <th scope="col">{% trans "nameC" %}</th>
+                                                    <th scope="col">{% trans "descc" %}</th>
                                                    
                                                 </tr>
                                             </thead>
@@ -136,8 +143,7 @@
                                                     <td>template_name</td>
                                                     <td>
                                                     <p>
-                                                        Nombre del reporte que fue insertado en la base de datos. 
-
+                                                        {% trans "template_name" %}
                                                     </p>
                                                         
                                                     </td>
@@ -147,8 +153,7 @@
                                                     <th scope="row">2</th>
                                                     <td>data</td>
                                                     <td> <p>
-                                                        Contexto pasado como un diccionario. Esta constituye la información que será renderizada en el reporte. Cada nombre de las variables del contexto debe coincidir con su equivalente en los parámetros definidos
-                                                        en el diseño de la plantilla del modelo.
+                                                       {% trans "data" %}
                                                     </p></td>
                                                     
                                                 </tr>
@@ -156,7 +161,7 @@
                                                     <th scope="row">3</th>
                                                     <td>extension</td>
                                                     <td><p>
-                                                        Parámetro que solo admite dos valores de entrada (pdf - xlsx). Por defecto siempre es pdf. Es el formato con el cual será exportado el reporte.
+                                                        {% trans "extension" %}
                                                     </p></td>
                                                    
                                                 </tr>
@@ -166,12 +171,25 @@
                                                     <td>file</td>
                                                     <td>
                                                     <p>
-                                                       Nombre del fichero del reporte al ser exportado. Por defecto se establece como "reporte".
+                                                        {% trans "file" %}
                                                     </p>
                                                         
                                                     </td>
                                                    
                                                 </tr>
+
+                                                <tr>
+                                                    <th scope="row">5</th>
+                                                    <td>download</td>
+                                                    <td>
+                                                    <p>
+                                                        {% trans "download" %}
+                                                    </p>
+                                                        
+                                                    </td>
+                                                   
+                                                </tr>
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -181,13 +199,12 @@
                         </div>
                         <div class="tab-pane fade" id="exportjson" role="tabpanel" aria-labelledby="exportjson-tab">
                             
-                            <p><b>export_report_from_JSON(path_json, data, extension="pdf", file="reporte")</b>:  Esta función permite que el programador pueda renderizar un reporte exportado en un fichero JSON independiente usando su ruta específica 
-                                y los datos pasados como contexto.</p>
+                            <p>{% trans 'exp3_desc' %}</p>
                        
                             <div class="card card-statistics">
                                 <div class="card-header">
                                     <div class="card-heading">
-                                        <h4 class="card-title">Parámetros</h4>
+                                        <h4 class="card-title">{% trans "param" %}</h4>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -196,8 +213,8 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
-                                                    <th scope="col">Nombre</th>
-                                                    <th scope="col">Descripción</th>
+                                                    <th scope="col">{% trans "nameC" %}</th>
+                                                    <th scope="col">{% trans "descc" %}</th>
                                                    
                                                 </tr>
                                             </thead>
@@ -207,9 +224,7 @@
                                                     <td>path_json</td>
                                                     <td>
                                                     <p>
-                                                        Ruta específica del archivo con formato JSON. (Este fichero se genera con la función
-                                                        de "Exportación" de esta app). Se puede usar su path relativo según la estructura del proyecto. 
-
+                                                        {% trans "path_json" %}
                                                     </p>
                                                         
                                                     </td>
@@ -219,8 +234,7 @@
                                                     <th scope="row">2</th>
                                                     <td>data</td>
                                                     <td> <p>
-                                                        Contexto pasado como un diccionario. Esta constituye la información que será renderizada en el reporte. Cada nombre de las variables del contexto debe coincidir con su equivalente en los parámetros definidos
-                                                        en el diseño de la plantilla del modelo.
+                                                       {% trans "data" %}
                                                     </p></td>
                                                     
                                                 </tr>
@@ -228,7 +242,7 @@
                                                     <th scope="row">3</th>
                                                     <td>extension</td>
                                                     <td><p>
-                                                        Parámetro que solo admite dos valores de entrada (pdf - xlsx). Por defecto siempre es pdf. Es el formato con el cual será exportado el reporte.
+                                                        {% trans "extension" %}
                                                     </p></td>
                                                    
                                                 </tr>
@@ -238,12 +252,25 @@
                                                     <td>file</td>
                                                     <td>
                                                     <p>
-                                                       Nombre del fichero del reporte al ser exportado. Por defecto se establece como "reporte".
+                                                        {% trans "file" %}
                                                     </p>
                                                         
                                                     </td>
                                                    
                                                 </tr>
+
+                                                <tr>
+                                                    <th scope="row">5</th>
+                                                    <td>download</td>
+                                                    <td>
+                                                    <p>
+                                                        {% trans "download" %}
+                                                    </p>
+                                                        
+                                                    </td>
+                                                   
+                                                </tr>
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -265,51 +292,46 @@
         <div class="card card-statistics">
             <div class="card-header">
                 <div class="card-heading">
-                    <h4 class="card-title"> Funciones de Formato </h4>
+                    <h4 class="card-title"> {% trans "format" %} </h4>
                 </div>
             </div>
             <div class="card-body">
                 <div class="tab tab-vertical">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active show" id="listdict-tab" data-toggle="tab" href="#listdict" role="tab" aria-controls="listdict" aria-selected="true"> Convertir a lista</a>
+                            <a class="nav-link active show" id="listdict-tab" data-toggle="tab" href="#listdict" role="tab" aria-controls="listdict" aria-selected="true"> {% trans "format1" %}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="dict-tab" data-toggle="tab" href="#dict" role="tab" aria-controls="dict" aria-selected="false"> Convertir a un diccionario </a>
+                            <a class="nav-link" id="dict-tab" data-toggle="tab" href="#dict" role="tab" aria-controls="dict" aria-selected="false"> {% trans "format2" %} </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="image64-tab" data-toggle="tab" href="#image64" role="tab" aria-controls="image64" aria-selected="false">Ajustar imagen </a>
+                            <a class="nav-link" id="image64-tab" data-toggle="tab" href="#image64" role="tab" aria-controls="image64" aria-selected="false">{% trans "format3" %} </a>
                         </li>
                         
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane fade active show" id="listdict" role="tabpanel" aria-labelledby="listdict-tab">
                             <p>
-                                <b>convert_list_to_dict()</b>:
-                                   Esta función auxiliar recibe como parámetro una Query realizada con un Model de base de datos 
-                                y lo convierte en una lista o colección de diccionarios para ser utilizada por un reporte. Solo permite la conversión de
-                                aquellos campos simples.
+                                {% trans "convert_list_to_dict" %}
 
                             </p>
                         </div>
                         <div class="tab-pane fade" id="dict" role="tabpanel" aria-labelledby="dict-tab">
                             <p>
-                                <b>to_dict()</b>:
-                                Esta función auxiliar puede convertir cada instancia de un clase Model pasada como parámetro 
-                                en un diccionario de clave-valor entendible por el reporte. Solo permite la conversión de
-                                aquellos campos simples.
+                               {% trans "to_dict" %}
 
                             </p>     
                        
                         </div>
                         <div class="tab-pane fade" id="image64" role="tabpanel" aria-labelledby="image64-tab">
-                            <p><b>convert_to_base64(path, format_image)</b>:  
-                                Esta función puede ser utilizada para convertir una imagen cualquiera a formato base 64. Este formato es necesario para que la imagen se muestre sin problemas en el reporte.</p>
+                            <p> {% trans "convert_to_base64" %}
+
+                            </p>
                        
                             <div class="card card-statistics">
                                 <div class="card-header">
                                     <div class="card-heading">
-                                        <h4 class="card-title">Parámetros</h4>
+                                        <h4 class="card-title">{% trans "param" %}</h4>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -318,8 +340,8 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
-                                                    <th scope="col">Nombre</th>
-                                                    <th scope="col">Descripción</th>
+                                                    <th scope="col">{% trans "nameC" %}</th>
+                                                    <th scope="col">{% trans "descc" %}</th>
                                                    
                                                 </tr>
                                             </thead>
@@ -329,8 +351,7 @@
                                                     <td>path</td>
                                                     <td>
                                                     <p>
-                                                        Ruta específica de la imagen. Solo se puede usar su path relativo según la estructura del proyecto. 
-
+                                                       {% trans "path" %}
                                                     </p>
                                                         
                                                     </td>
@@ -340,7 +361,8 @@
                                                     <th scope="row">2</th>
                                                     <td>format_image</td>
                                                     <td> <p>
-                                                        Formato de la imagen, solo soportable .png y .jpg
+                                                        {% trans "format_image" %}    
+                                                    
                                                     </p></td>
                                                     
                                                 </tr>

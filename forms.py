@@ -1,5 +1,6 @@
 from django import forms
 from .models import ReportDefinition
+from django.utils.translation import gettext_lazy  as _
 
 class ReportForm(forms.ModelForm):
 
@@ -14,8 +15,8 @@ class ReportForm(forms.ModelForm):
         }
 
         widgets={
-           'name':forms.TextInput(attrs={"class":"form-control", "id":"nombre" , "placeholder":"Entre el nombre del reporte"}),
-            'remark':forms.Textarea(attrs={"class":"form-control", "rows":"3" ,"id":"desc" ,"placeholder":"Provee una reseña sobre la función del reporte"}),
+           'name':forms.TextInput(attrs={"class":"form-control", "id":"nombre" , "placeholder": _("holdern")}),
+            'remark':forms.Textarea(attrs={"class":"form-control", "rows":"3" ,"id":"desc" ,"placeholder": _("holderd")}),
             
             }  
 
@@ -23,7 +24,7 @@ class ReportForm(forms.ModelForm):
 
 class ReportImpForm(forms.Form):
 
-    template= forms.FileField(label="Plantilla",widget=forms.FileInput(attrs={"class":"form-control-file","id":"filetemplate"}))
+    template= forms.FileField(label="Plantilla",widget=forms.FileInput(attrs={"class":"form-control-file","id":"filetemplate", "placeholder": _("holderf")}))
 
     
 

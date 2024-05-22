@@ -5,9 +5,9 @@ from django.views.generic import ListView, CreateView, UpdateView
 from .forms import ReportForm, ReportImpForm
 from django.urls import reverse_lazy
 from datetime import datetime
-from django.core.serializers import serialize
 from django.http import HttpResponse
 import json
+from django.utils.translation import gettext as _
 
 
 
@@ -96,7 +96,7 @@ def importreport(request):
                  remark=file ["remark"],  
                  last_modified_at=actual )
             except :
-                return render(request,"import.html",{"form":ReportImpForm(), "error":"El archivo no posee el formato adecuado."} )
+                return render(request,"import.html",{"form":ReportImpForm(), "error":_("not_format")} )
 
 
             return redirect("reportbroD:list")

@@ -5,6 +5,7 @@ from django.db import models
 from itertools import chain
 from django.http import HttpResponseServerError
 from .reportcore import reportPDF, reportXLSX
+from PIL import Image, ImageDraw, ImageOps
 
 
 
@@ -28,7 +29,6 @@ def to_dict(instance):
                 data[f.name] = None
         else:
             data[f.name] = f.value_from_object(instance)
-   
     return data
 
 
@@ -47,15 +47,19 @@ def convert_to_base64(path, format_image):
       para que ReportBro pueda renderizarla como parte de sus parámetros  """
     import base64
     from django.conf import settings
-    print(str(settings.BASE_DIR)+path)
     
     with open(str(settings.BASE_DIR)+path, "rb") as image_file:
         return f"data:image/{format_image};base64,{base64.b64encode(image_file.read()).decode('utf-8')}"
     
 
 
-def export_report_by_code(template_code, data, extension="pdf", file="reporte"):
-    """ Export a report using its code"""
+def export_report_by_code(template_code, data, extension="pdf", file="reporte", download=False):
+    """ Export a report using its code
+    view_mode: Its the way in the report pdf is going to download through the navegator. Two options:
+    1. download =False, (inline) >the pdf report is showed in the navegator and the user can download it handly or making print, etc.
+    2. download =True (attachment) >the pdf report is downloaded directly into pc
+    
+    """
     
     report = ReportDefinition.objects.filter(pk=template_code).first()
     
@@ -66,12 +70,16 @@ def export_report_by_code(template_code, data, extension="pdf", file="reporte"):
     if extension.lower() =="xlsx":
         return reportXLSX( report.report_definition, data, file)
     
-    return reportPDF( report.report_definition, data, file)
+    return reportPDF( report.report_definition, data, file, download)
 
 
 
-def export_report_by_name(template_name, data, extension="pdf", file="reporte"):
-    """ Export a report using its name"""
+def export_report_by_name(template_name, data, extension="pdf", file="reporte", download=False):
+    """ Export a report using its name
+    view_mode: Its the way in the report pdf is going to download through the navegator. Two options:
+    1. download =False, (inline) >the pdf report is showed in the navegator and the user can download it handly or making print, etc.
+    2. download =True (attachment) >the pdf report is downloaded directly into pc
+    """
 
     report = ReportDefinition.objects.filter(name=template_name).first()
     
@@ -82,12 +90,16 @@ def export_report_by_name(template_name, data, extension="pdf", file="reporte"):
     if extension.lower() =="xlsx":
         return reportXLSX(report.report_definition, data, file)
     
-    return reportPDF(report.report_definition, data, file)
+    return reportPDF(report.report_definition, data, file, download)
 
 
 
-def export_report_from_JSON(path_json, data, extension="pdf", file="reporte"):
-    """ Export a report using a JSON template report."""
+def export_report_from_JSON(path_json, data, extension="pdf", file="reporte", download=False):
+    """ Export a report using a JSON template report.
+    view_mode: Its the way in the report pdf is going to download through the navegator. Two options:
+    1. download =False, (inline) >the pdf report is showed in the navegator and the user can download it handly or making print, etc.
+    2. download =True (attachment) >the pdf report is downloaded directly into pc
+    """
     
     try:
         with open(path_json) as json_file:
@@ -99,7 +111,7 @@ def export_report_from_JSON(path_json, data, extension="pdf", file="reporte"):
         
 
     if extension.lower() =="xlsx":
-        return reportXLSX(report["report_definition"], data, file)
+        return reportXLSX(report["report_definition"], data, file )
     
-    return reportPDF(report["report_definition"], data, file)
+    return reportPDF(report["report_definition"], data, file, download)
 

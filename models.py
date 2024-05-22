@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime
 import json
+from django.utils.translation import gettext as _
 
 
 
@@ -31,7 +32,7 @@ class ReportDefinition(models.Model):
 
     def unique_error_message(self, model_class, unique_check):
         if model_class == type(self) and unique_check == ("name",):
-            return 'Ya existe un reporte con el mismo nombre.'
+            return _("unique")
         else:
             return super(ReportDefinition, self).unique_error_message(model_class, unique_check)
 

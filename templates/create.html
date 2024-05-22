@@ -1,8 +1,9 @@
 {% extends 'bases/base.html'%}
 {% load static %}
+{% load i18n %} 
 
 {% block title %}
-		Creando Reporte
+		{% trans "title_add1" %}
 		{% endblock %}
 
 {% block content %}
@@ -15,7 +16,7 @@
                 <!-- begin page title -->
                 <div class="d-block d-sm-flex flex-nowrap align-items-center">
                     <div class="page-title mb-2 mb-sm-0">
-                        <h1>Registro de nuevo Reporte</h1>
+                        <h1>{% trans "title_add" %}</h1>
                     </div>
                     <div class="ml-auto d-flex align-items-center">
                         <nav>
@@ -24,9 +25,9 @@
                                     <a href="/"><i class="ti ti-home"></i></a>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a href="{% url 'reportbroD:list' %}">Administración de Reportes</a> 
+                                    <a href="{% url 'reportbroD:list' %}">{% trans "app" %}</a> 
                                 </li>
-                                <li class="breadcrumb-item active text-primary" aria-current="page">Nuevo</li>
+                                <li class="breadcrumb-item active text-primary" aria-current="page">{% trans 'subtitle_add' %}</li>
                             </ol>
                         </nav>
                     </div>

@@ -1,8 +1,9 @@
 {% extends 'bases/base.html'%}
 {% load static %}
+{% load i18n %} 
 
 {% block title %}
-		Editando Reporte
+		{% trans "title_edit" %}
 		{% endblock %}
 {% block content %}
 <div class="app-main" id="main">
@@ -14,7 +15,7 @@
                 <!-- begin page title -->
                 <div class="d-block d-sm-flex flex-nowrap align-items-center">
                     <div class="page-title mb-2 mb-sm-0">
-                        <h1>Editando Reporte</h1>
+                        <h1>{% trans "title_edit" %}</h1>
                     </div>
                     <div class="ml-auto d-flex align-items-center">
                         <nav>
@@ -23,7 +24,7 @@
                                     <a href="/"><i class="ti ti-home"></i></a>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a href="{% url 'reportbroD:list' %}">Administración de Reportes</a> 
+                                    <a href="{% url 'reportbroD:list' %}">{% trans "app" %}</a> 
                                 </li>
                                 <li class="breadcrumb-item active text-primary" aria-current="page">{{object.name}}</li>
                             </ol>
@@ -40,7 +41,7 @@
                 <div class="card card-statistics">
                     <div class="card-header">
                         
-                        <a href="{% url 'reportbroD:template' reporte.id %}" class="btn btn-success" ><i class="zmdi zmdi-file-text"></i> Editar plantilla
+                        <a href="{% url 'reportbroD:template' reporte.id %}" class="btn btn-success" ><i class="zmdi zmdi-file-text"></i> {% trans "template_edit" %}
                         </a>     
                     </div>
      {% include 'formulario.html' %}

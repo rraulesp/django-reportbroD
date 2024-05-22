@@ -1,9 +1,10 @@
-from django.urls import path
+from django.urls import path, include
 from .views import *
 from  .reportcore import *
 
 app_name="reportbroD"
 urlpatterns = [
+ 
     path("", ReportList.as_view(), name="list"),
     path("create/", CreateReport.as_view(), name="create"),
      path("import/", importreport, name="import"),
@@ -17,4 +18,4 @@ urlpatterns = [
     path("save/<int:pk>/", save, name="report_save"),
 
 
-]
+] 

@@ -1,10 +1,11 @@
 {% load static %}
+{% load i18n %} 
 <!DOCTYPE HTML>
 <html>
 <head>
 <title>
     {% block title %}
-Editando plantilla del reporte 
+{% trans "report_temp" %}
     {% endblock %}
 
  </title>
@@ -14,8 +15,19 @@ Editando plantilla del reporte
 SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <!-- app favicon -->
 <link rel="shortcut icon" href="{% static 'assets/img/favicon.ico' %}">
+
 <link href="{% static 'reportlib/reportbro.css' %}" rel="stylesheet" type="text/css"/>
+                 
 <script src="{% static 'reportlib/reportbro.js' %}"></script>
+                   
+
+<link href="{% static 'reportlib/css/styles.css' %}" rel="stylesheet" type="text/css"/>
+
+	<!-- plugins -->
+	<script src="{% static 'assets/js/vendors.js' %}"></script>
+
+	<!-- custom app -->
+	<script src="{% static 'assets/js/app.js' %}"></script>
 
 <script src="{% static 'reportlib/js/jquery-3.6.0.min.js' %}"></script>
 <script src="{% static 'reportlib/js/jquery.cookie.js' %}"></script>
@@ -24,7 +36,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 	<!-- app style -->
 	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}" />
 
-<link href="{% static 'reportlib/css/styles.css' %}" rel="stylesheet" type="text/css"/>
+    
 
 <script type="text/javascript">
 
@@ -46,11 +58,74 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 </head>
 <body>
-    
+   <!-- begin app -->
+	
+	
+            <div style="padding:30px">
+                <header class="app-header top-bar">
+                    <!-- begin navbar -->
+                    <nav class="navbar navbar-expand-md">
+                
+                   
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="ti ti-align-left"></i>
+                        </button>
+                        <!-- end navbar-header -->
+                        <!-- begin navigation -->
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <div class="navigation d-flex">
+                                <ul class="navbar-nav nav-left">
+                                    <li class="nav-item">
+                                        <a href="javascript:void(0)" class="nav-link sidebar-toggle">
+                                            <i class="ti ti-align-right"></i>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link "   role="button"  aria-haspopup="true" aria-expanded="false">
+                                            
+                                            <i class="fa fa-edit"></i> {{name}}
+                                          
+                                        </a>
+                                    </li>
+                                    
+                                    
+                                </ul>
+                
+                                <ul class="navbar-nav nav-right ml-auto">
+                                    
+                                    {% for elem in menu %}
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link " href="{{elem.url}}" id="navbarDropdown2" role="button"  aria-haspopup="true" aria-expanded="false" title="{{elem.label}}">
+                                            <i class="{{elem.icon}}"></i>
+                
+                                            {% if active_page == elem.id %}
+                                        <span class="notify">
+                                            <span class="blink"></span>
+                                <span class="dot"></span>
+                                </span>
+                                {% endif %}
+                                        </a>
+                                        
+                                    </li>
+                
+                
+                                    {% endfor %}
+                                </ul>
+                             
+            
+                        
+                        </div>
+                        <!-- end navigation -->
+                    </nav>
+                    <!-- end navbar -->
+                </header>
+                
+            </div>
 
-    <span class="label label-success"><b>Plantilla:  {{name}} </b></span> <a style="padding-left: 10px;"  href="{% url 'reportbroD:list' %}"><span class="label label-success" style="color: rgb(7, 60, 138);"><i class="fa fa-list"></i><b> Volver a la lista </b></span></a>
-    
-    <div id="reportbro"></div>
+			<div id="reportbro"  >
+               
+            </div> 
+
 
     <script type="text/javascript">
     
@@ -82,5 +157,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     }
     
     </script>
+
 </body>
 </html>

@@ -1,8 +1,8 @@
 {% extends 'bases/base.html'%}
 {% load static %}
-
+{% load i18n %}
 {% block title %}
-		Importando Reporte
+	{% trans "title_import" %}
 		{% endblock %}
 
 {% block content %}
@@ -15,7 +15,7 @@
                 <!-- begin page title -->
                 <div class="d-block d-sm-flex flex-nowrap align-items-center">
                     <div class="page-title mb-2 mb-sm-0">
-                        <h1>Importando Reporte</h1>
+                        <h1>{% trans "title_edit" %}</h1>
                     </div>
                     <div class="ml-auto d-flex align-items-center">
                         <nav>
@@ -24,9 +24,9 @@
                                     <a href="/"><i class="ti ti-home"></i></a>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a href="{% url 'reportbroD:list' %}">Administración de Reportes</a> 
+                                    <a href="{% url 'reportbroD:list' %}">{% trans "app" %}</a> 
                                 </li>
-                                <li class="breadcrumb-item active text-primary" aria-current="page">Importar</li>
+                                <li class="breadcrumb-item active text-primary" aria-current="page">{% trans "title_import1" %}</li>
                             </ol>
                         </nav>
                     </div>
@@ -46,7 +46,7 @@
                         <form method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             <div class="form-group">
-                                <label for="nombre">{{form.template.label}} (Formato en JSON)</label>
+                                <label for="nombre">{% trans "especif" %}</label>
         
                                 {{form.template}}
         
@@ -66,7 +66,7 @@
                             </div>
                            
         
-                            <button type="submit" class="btn btn-primary">Subir</button>
+                            <button type="submit" class="btn btn-primary">{% trans "btn_upload" %}</button>
                         </form>
                         
                     </div>

@@ -1,0 +1,345 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-13 07:17-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "lang_change"
+msgstr "Change Language"
+
+msgid "app"
+msgstr "Reports Administration"
+
+msgid "title"
+msgstr "Reports"
+
+msgid "nameC"
+msgstr "Name"
+
+msgid "codec"
+msgstr "Using code"
+
+msgid "updatec"
+msgstr "Modified"
+
+msgid "descc"
+msgstr "Description"
+
+msgid "btnok"
+msgstr "Submit"
+
+msgid "actions"
+msgstr "Actions"
+
+msgid "template"
+msgstr "Template"
+
+msgid "back_list"
+msgstr "Return to the list"
+
+msgid "action_add"
+msgstr "Add report"
+
+msgid "action_template"
+msgstr "Update template of report"
+
+msgid "action_delete"
+msgstr "Delete report"
+
+msgid "action_duplicate"
+msgstr "Duplicate report"
+
+msgid "action_export"
+msgstr "Export report"
+
+msgid "action_import"
+msgstr "Import report"
+
+msgid "action_page"
+msgstr "Page"
+
+msgid "action_prev"
+msgstr "Previous"
+
+msgid "action_next"
+msgstr "Next"
+
+msgid "msg_noreport"
+msgstr "There's not report records"
+
+#pagina de registrar reporte
+msgid "title_add1"
+msgstr "Creating Report"
+
+msgid "title_add"
+msgstr "New report registration"
+
+msgid "subtitle_add"
+msgstr "New"
+
+msgid "unique"
+msgstr "A report name is repeated. Change it."
+
+
+#Placeholder de los formularios
+msgid "holdern"
+msgstr "Enter the report's name."
+
+msgid "holderd"
+msgstr "Provide an overview of the report's function."
+
+msgid "holderf"
+msgstr "Select a JSON template."
+
+
+#dialogo de eliminar reporte
+msgid "title_delete"
+msgstr "Remove report"
+
+msgid "ask_delete"
+msgstr "Are you sure to want to delete the report "
+
+msgid "action_close"
+msgstr "Close"
+
+#dialogo de importar reporte
+msgid "title_import"
+msgstr "Import report"
+
+msgid "warn_import"
+msgstr "The file extension must be .json"
+
+#pagina de editar reporte
+msgid "title_edit"
+msgstr "Editing Report"
+
+msgid "template_edit"
+msgstr "Update template"
+
+#pagina de importar reporte
+
+
+msgid "title_import1"
+msgstr "Import"
+
+msgid "especif"
+msgstr "Template (Format in JSON)"
+
+msgid "btn_upload"
+msgstr "Upload"
+
+msgid "not_format"
+msgstr "Format file is not suitable."
+
+
+#enlaces del menu
+msgid "options"
+msgstr "Main Options"
+
+msgid "opt1"
+msgstr "Reportbro Admin Documentation"
+
+msgid "opt2"
+msgstr "Tutorial on ReportBro Designer"
+
+msgid "opt3"
+msgstr "Site Administration"
+
+msgid "opt4"
+msgstr "Home"
+
+
+#Documentacion Page
+
+msgid "titledoc"
+msgstr "Documentation"
+
+msgid "titledoc1"
+msgstr "ReportBro Admin Documentation"
+
+msgid "seccion1"
+msgstr "What's Reportbro"
+
+msgid "seccion2"
+msgstr "Compatibility"
+
+msgid "seccion3"
+msgstr "Specifications"
+
+
+#Seccion 1
+
+msgid "tem1"
+msgstr "Library of ReportBro Designer"
+
+msgid "tem1_parr1"
+msgstr "Designer is a JavaScript plugin that can be integrated into your web application. Although this requires a little more work at first, having a built-in template design tool has quite a few benefits as you will discover by reading. Installation is simple by including some JavaScript libraries and initializing the Designer with some HTML and JavaScript code."
+
+msgid "tem1_parr2"
+msgstr "It is optimized for simple reporting, that is, to display data (text, tabular data, or images) exactly as defined in a design template. All parameters are passed directly to the report and therefore <b>ReportBro </b> does not require knowledge of SQL (or another query language) to create a report. In contrast, using the same data requests in the underlying web application and for reporting eliminates the risk of potential inconsistencies between the data displayed on the screen and the printed report."
+
+
+msgid "tem1_parr3"
+msgstr "<b> ReportBro</b> allows you to easily and quickly design reports with a perfect design. Printing the current page in the footer is as simple as inserting predefined variables for the current page and total page count. Even to generate Excel outputs no additional configuration is needed because ReportBro has a very clear structure and is easy to learn."
+
+
+
+msgid "tem2"
+msgstr "Library of reportbro-lib"
+
+msgid "tem2_parr1"
+msgstr "<b> ReportBro-lib</b> is a library for generating PDF and XLSX reports written in Python for use in conjunction with <b>Django</b>. Report templates can be created with <b>ReportBro Designer</b>, a Javascript plugin that can be integrated into your web application."
+
+msgid "tem3"
+msgstr "ReportBro Admin"
+
+msgid "tem3_parr1"
+msgstr "<b>A free project that unites the JavaScript libraries of ReportBro designer and the reportbro-lib library.</b>"
+
+
+msgid "tem3_parr2"
+msgstr "This project is a django app that allows the administration and easy integration of all the libraries related to ReportBro."
+
+
+
+
+
+#Seccion 2
+
+msgid "tem21"
+msgstr "Libraries Used"
+
+msgid "tem21_1parr1"
+msgstr "ReportBro Designer Javascript"
+
+msgid "tem21_1parr2"
+msgstr "The free version of <b>ReportBro Designer</b> was used, so only the functions available in that version can be used."
+
+msgid "tem21_2parr1"
+msgstr "Code Reference"
+
+msgid "tem21_2parr2"
+msgstr "<b>This app is an enhanced version of the Albumsreport sample created for ReportBro Designer.</b>"
+
+msgid "tem21_2parr3"
+msgstr "Original version available in "
+
+
+msgid "tem21_3parr1"
+msgstr "Reportbro-lib"
+
+msgid "tem21_3parr2"
+msgstr "It generates pdf and xlsx reports, Supports (repetitions) header and footer, Allows predefined and own formats for the pages of the report, Uses the elements: Texts, line, image, barcodes, tables, break pages and sections, Allows the stylization of texts and elements and can evaluate expressions and define conditionals."
+
+
+msgid "tem22"
+msgstr "Supported Databases"
+
+msgid "tem22_parr1"
+msgstr "<b> It supports all adjustable databases for Django: SQLite, Postgres, MySQL, etc</b>"
+
+
+#Seccion 3
+
+msgid "esp1"
+msgstr "Data Formats"
+
+msgid "esp1_parr"
+msgstr "ReportBro reports accept data using a dictionary or context (such as a view function). Each parameter of the context, therefore, is defined with its name (unrepeatable data that must coincide with the one defined during the design of the report) and its information (a text, number, date, image, simple list of elements or objects). Objects within a list must be defined as a dictionary so that the Report can recognize their attributes."
+
+msgid "esp2"
+msgstr "Export Modes"
+
+msgid "exp1"
+msgstr "Export by Code"
+
+msgid "exp2"
+msgstr "Export by Name"
+
+msgid "exp3"
+msgstr "Export using JSON"
+
+msgid "exp1_desc"
+msgstr "<b>export_report_by_code(template_code, data, extension='pdf', file='report')</b>: This function allows the programmer to render a report (in the database) using mainly its code (record code that is always unique) and the data passed as context."
+
+msgid "exp2_desc"
+msgstr "<b>export_report_by_name(template_code, data, extension='pdf', file='report')</b>: This function allows the programmer to render a report (in the database) using mainly its name (record name that will always be unique) and the data passed as context."
+
+msgid "exp3_desc"
+msgstr "<b>export_report_from_JSON(path_json, data, extension='pdf', file='report')</b>: This feature allows the programmer to render an exported report in a separate JSON file using its specific path and the data passed as context."
+
+#tabla de parametros
+msgid "param"
+msgstr "Parameters"
+
+msgid "template_code"
+msgstr "Use code of the report that was inserted into the database."
+
+msgid "template_name"
+msgstr "Name of the report that was inserted into the database."
+
+msgid "path_json"
+msgstr "Specific path of the JSON-formatted file. (This file is generated with the 'Export' function of this app.) Its relative path can be used depending on the structure of the project."
+
+
+#parametros que son comunes en la tabla
+
+msgid "data"
+msgstr "Context used as a dictionary. This is the information that will be rendered in the report. Each name of the variables in the context must match its equivalent in the parameters defined in the model template design."
+
+msgid "extension"
+msgstr "Parameter that supports only two input values (pdf - xlsx). By default it is always pdf. This is the format in which the report will be exported."
+
+msgid "file"
+msgstr "Name of the report file when exported. By default it is set to 'report'."
+
+msgid "download"
+msgstr "If the variable is set to True, the pdf report will be downloaded directly without being viewed, otherwise the pdf will be displayed."
+
+
+#funciones de formato
+msgid "format"
+msgstr "Format Options"
+
+msgid "format1"
+msgstr "Convert to list"
+
+msgid "format2"
+msgstr "Convert to dictionary"
+
+msgid "format3"
+msgstr "Adjust Image"
+
+msgid "convert_list_to_dict"
+msgstr " <b>convert_list_to_dict()</b>: This helper function receives as a parameter a query made with a database model and converts it into a list or collection of dictionaries to be used by a report. It only allows the conversion of those simple fields."
+
+msgid "to_dict"
+msgstr "<b>to_dict()</b>: This helper function can convert each instance of a passed Model class as a parameter into a key-value dictionary understandable by the report. It only allows the conversion of those simple fields."
+
+msgid "convert_to_base64"
+msgstr "<b>convert_to_base64(path, format_image)</b>:This function can be used to convert any image to base 64 format. This format is necessary for the image to display smoothly in the report."
+
+msgid "path"
+msgstr "Image-specific path. Only its relative path can be used according to the project structure."
+
+msgid "format_image"
+msgstr "Image format, only allows .png and .jpg"
+
+
+#template
+msgid "report_temp"
+msgstr "Editing report's template"

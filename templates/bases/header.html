@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load i18n %} 
 <header class="app-header top-bar">
     <!-- begin navbar -->
     <nav class="navbar navbar-expand-md">
@@ -28,7 +28,7 @@
                     <li class="nav-item">
                         <a class="nav-link  " href="{% url 'reportbroD:list' %}"  role="button"  aria-haspopup="true" aria-expanded="false">
                             
-                            <i class="fa fa-edit"></i> Administración de Reportes
+                            <i class="fa fa-edit"></i> {% trans "app" %}
                           
                         </a>
                     </li>
@@ -56,8 +56,43 @@
 
                     {% endfor %}
                 </ul>
+             
 
-            </div>
+                
+                <ul class="navbar-nav nav-right ml-auto ">
+        
+<form  action="{% url 'set_language' %}" method="post" style="display: inline;">
+    {% csrf_token %}
+    <input name="next" type="hidden" value="{{ redirect_to }}">
+  
+    {% get_current_language as LANGUAGE_CODE %}
+   
+    {% if LANGUAGE_CODE == 'es' %}
+    <img src="{% static 'assets/img/spain.png' %}" width="20px;" />
+    {% else %}
+
+    <img src="{% static 'assets/img/eeuu.png' %}" width="20px;" />
+    {% endif %}
+    
+
+    <select  class="js-basic-single form-control"  name="language" onchange="this.form.submit()">
+
+        {% for language in reportbro_langs %}
+            <option value="{{ language.code }}"
+            {% if language.code == LANGUAGE_CODE %} 
+            selected
+            {% endif %}>
+           
+<img src="{% static 'assets/img/spain.png' %}" width="10px;" />
+        
+                {{ language.name_local |lower|capfirst}} ({{ language.code }})
+            </option>
+        {% endfor %}
+    </select>
+    
+</form>
+</ul>
+        
         </div>
         <!-- end navigation -->
     </nav>

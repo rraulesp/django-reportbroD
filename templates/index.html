@@ -1,6 +1,6 @@
 {% extends 'bases/base.html'%}
 {% load static %}
-
+{% load i18n %} 
 
 {% block content %}
 
@@ -13,7 +13,9 @@
                 <!-- begin page title -->
                 <div class="d-block d-sm-flex flex-nowrap align-items-center">
                     <div class="page-title mb-2 mb-sm-0">
-                        <h1>Reportes</h1>
+                        <h1>{% trans "title" %}</h1>
+
+
                     </div>
                     <div class="ml-auto d-flex align-items-center">
                         <nav>
@@ -21,7 +23,7 @@
                                 <li class="breadcrumb-item">
                                     <a href="/"><i class="ti ti-home"></i></a>
                                 </li>
-                                <li class="breadcrumb-item active text-primary" aria-current="page">Administración de Reportes</li>
+                                <li class="breadcrumb-item active text-primary" aria-current="page">{% trans "app" %}</li>
                             </ol>
                         </nav>
                     </div>
@@ -43,11 +45,11 @@
                     <div class="card-header">
                         
                         <div class="d-xxs-flex justify-content-between align-items-center">
-                            <a href="{% url 'reportbroD:create' %}" class="btn btn-info" title="Agregar reporte" ><i class="fa fa-plus-circle"></i></a>
+                            <a href="{% url 'reportbroD:create' %}" class="btn btn-info" title="{% trans 'action_add' %}" ><i class="fa fa-plus-circle"></i></a>
                            
                           
                            
-                            <a href="{% url 'reportbroD:import' %}" class="btn btn-primary" title="Importar reporte" ><i class="fa fa-upload"></i></a >
+                            <a href="{% url 'reportbroD:import' %}" class="btn btn-primary" title="{% trans 'action_import' %}" ><i class="fa fa-upload"></i></a >
   
                       
                            
@@ -58,11 +60,11 @@
                         <table class="table clients-contant-table mb-0">
                             <thead>
                                 <tr style="text-align: center;">
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Código de uso</th>
-                                    <th scope="col">Modificado</th>
+                                    <th scope="col">{% trans "nameC" %}</th>
+                                    <th scope="col">{% trans "codec" %}</th>
+                                    <th scope="col">{% trans "updatec" %}</th>
                                     
-                                    <th scope="col">Acciones</th>
+                                    <th scope="col">{% trans "actions" %}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -83,13 +85,13 @@
                                     <td style="text-align: center;"><a href="javascript:void(0)" class="dot"></a><span>{{ report.last_modified_at | date}}</span></td>
                                     <td style="text-align: center;">
                                         
-                                        <a href="{% url 'reportbroD:template' report.pk %}" class="btn btn-icon btn-outline-success btn-round mr-2 mb-2 mb-sm-0" title="Editar plantilla del reporte"><i class="ti ti-file"></i></a>
+                                        <a href="{% url 'reportbroD:template' report.pk %}" class="btn btn-icon btn-outline-success btn-round mr-2 mb-2 mb-sm-0" title='{% trans "action_template" %}'><i class="ti ti-file"></i></a>
                                       
-                                        <button  class="btn btn-icon btn-outline-danger btn-round mr-2 mb-2 mb-sm-0" title="Eliminar reporte" data-toggle="modal" data-target="#report{{report.id}}"><i class="ti ti-close"></i></button>
+                                        <button  class="btn btn-icon btn-outline-danger btn-round mr-2 mb-2 mb-sm-0" title='{% trans "action_delete" %}' data-toggle="modal" data-target="#report{{report.id}}"><i class="ti ti-close"></i></button>
                                         
-                                        <a href="{% url 'reportbroD:duplicate' report.pk %}" class="btn btn-icon btn-outline-warning btn-round mr-2 mb-2 mb-sm-0" title="Duplicar reporte"><i class="ti ti-files"></i></a>
+                                        <a href="{% url 'reportbroD:duplicate' report.pk %}" class="btn btn-icon btn-outline-warning btn-round mr-2 mb-2 mb-sm-0" title='{% trans "action_duplicate" %}'><i class="ti ti-files"></i></a>
                                         
-                                        <a href="{% url 'reportbroD:exportation' report.pk %}" class="btn btn-icon btn-outline-primary btn-round mr-2 mb-2 mb-sm-0 " title="Exportar reporte"><i class="ti ti-download"></i></a>
+                                        <a href="{% url 'reportbroD:exportation' report.pk %}" class="btn btn-icon btn-outline-primary btn-round mr-2 mb-2 mb-sm-0 " title='{% trans "action_export" %}'><i class="ti ti-download"></i></a>
                                         
                                     </td>
                                 </tr>
@@ -98,17 +100,17 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title">Eliminar reporte</h5>
+                                                <h5 class="modal-title">{% trans "title_delete" %}</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                Deseas eliminar el reporte {{report.name}} !?
+                                                {% trans "ask_delete" %} {{report.name}} !?
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                                                <a href="{% url 'reportbroD:delete' report.id %}" class="btn btn-danger">Eliminar</a>
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">{% trans "action_close" %}</button>
+                                                <a href="{% url 'reportbroD:delete' report.id %}" class="btn btn-danger">{% trans "action_delete" %}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -119,7 +121,7 @@
   
                                 <div class="col-12 mb-3">
                                     <div class="alert alert-danger" role="alert">
-                                        <i class="fa fa-info-circle"></i> No se encuentra registrado ningún reporte
+                                        <i class="fa fa-info-circle"></i> {% trans "msg_noreport" %}
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -136,13 +138,13 @@
             
             
                                 <li class="page-item"><a class="page-link"
-                                        href="?page={{page_obj.previous_page_number}}">Anterior</a></li>
+                                        href="?page={{page_obj.previous_page_number}}">{% trans "action_prev" %}</a></li>
                                 {% endif %}
             
-                                <li class="page-item active"><a class="page-link"  >Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</a></li>
+                                <li class="page-item active"><a class="page-link"  >{% trans "action_page" %} {{ page_obj.number }} /  {{ page_obj.paginator.num_pages }}</a></li>
                                
                                 {% if page_obj.has_next %}
-                                <li class="page-item"><a class="page-link" href="?page={{page_obj.next_page_number}}">Siguiente</a>
+                                <li class="page-item"><a class="page-link" href="?page={{page_obj.next_page_number}}">{% trans "action_next" %}</a>
                                 </li>
             
                                 
@@ -156,29 +158,6 @@
                 </div></div>
                 </div>
     
-    
-                <div class="modal fade" id="importing" tabindex="-1" role="dialog" aria-labelledby="importing" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Importar reporte</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <form method="POST">
-                            <div class="modal-body">
-                                <h5>El fichero debe ser de tipo .json</h5>
-                                <input type="file" class="form-control-file" id="filetemplate" >
-                            </div>
-                            <div class="modal-footer"> 
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                                <button type="submit" class="btn btn-danger">Importar reporte</button>
-                            </div>
-                        </form>
-                        </div>
-                    </div>
-                </div>
     
     
     
