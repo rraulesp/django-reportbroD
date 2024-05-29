@@ -40,7 +40,12 @@
                     
                     {% for elem in menu %}
                     <li class="nav-item dropdown">
-                        <a class="nav-link " href="{{elem.url}}" id="navbarDropdown2" role="button"  aria-haspopup="true" aria-expanded="false" title="{{elem.label}}">
+                        <a class="nav-link " href="{{elem.url}}" id="navbarDropdown2" role="button"  aria-haspopup="true" aria-expanded="false" title="{{elem.label}}"
+                        {% if elem.target %}
+                        target="__blank"
+                            
+                        {% endif %}
+                        >
                             <i class="{{elem.icon}}"></i>
 
                             {% if active_page == elem.id %}
@@ -59,8 +64,12 @@
              
 
                 
+{% url 'set_language' as language_url %}
+{% if language_url %}
                 <ul class="navbar-nav nav-right ml-auto ">
-        
+                   
+                  
+
 <form  action="{% url 'set_language' %}" method="post" style="display: inline;">
     {% csrf_token %}
     <input name="next" type="hidden" value="{{ redirect_to }}">
@@ -91,8 +100,11 @@
     </select>
     
 </form>
+
+
 </ul>
-        
+{% endif %} 
+
         </div>
         <!-- end navigation -->
     </nav>

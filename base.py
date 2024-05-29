@@ -1,8 +1,8 @@
 import datetime
 import decimal
 import json
-from .models import ReportDefinition
 
+from .models import ReportDefinition
 
 
 def create_base_report_template(name):
@@ -14,9 +14,8 @@ def create_base_report_template(name):
     ReportDefinition.objects.create(
         name=name,
         report_definition=json.dumps(report_definition),
-        last_modified_at=datetime.datetime.now())
-
-
+        last_modified_at=datetime.datetime.now(),
+    )
 
 
 def json_default(obj):
@@ -26,5 +25,3 @@ def json_default(obj):
     if isinstance(obj, datetime.date):
         return str(obj)
     raise TypeError
-
-

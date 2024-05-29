@@ -1,9 +1,8 @@
-from django.db import models
-from datetime import datetime
 import json
+from datetime import datetime
+
+from django.db import models
 from django.utils.translation import gettext as _
-
-
 
 
 # store report requests for testing, used by ReportBro Designer
@@ -18,7 +17,7 @@ class ReportRequest(models.Model):
     created_on = models.DateTimeField()
 
     class Meta:
-        db_table = 'report_request'
+        db_table = "report_request"
 
 
 # report definition for our album report which is used for printing
@@ -34,24 +33,23 @@ class ReportDefinition(models.Model):
         if model_class == type(self) and unique_check == ("name",):
             return _("unique")
         else:
-            return super(ReportDefinition, self).unique_error_message(model_class, unique_check)
+            return super(ReportDefinition, self).unique_error_message(
+                model_class, unique_check
+            )
 
     class Meta:
-        db_table = 'report_definition'
-        verbose_name='Reporte'
-        verbose_name_plural='Reportes'
-        
+        db_table = "report_definition"
+        verbose_name = "Reporte"
+        verbose_name_plural = "Reportes"
 
     def __str__(self):
-        
+
         return self.name
-    
+
     def to_dict(self):
         return {
-            "report_definition":self.report_definition,
-            "name":self.name,
-            "remark":self.remark,
-            "last_modified_at":self.last_modified_at.isoformat()
-
+            "report_definition": self.report_definition,
+            "name": self.name,
+            "remark": self.remark,
+            "last_modified_at": self.last_modified_at.isoformat(),
         }
-    

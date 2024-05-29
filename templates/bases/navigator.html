@@ -15,7 +15,13 @@
 
     >
 
-    <a class=" has-arrow "  href="{{elem.url}}" aria-expanded="false" >
+    <a class=" has-arrow "  href="{{elem.url}}" aria-expanded="false"  
+    
+    {% if elem.target %}
+    target="__blank"
+        
+    {% endif %}
+    >
 
     <i class="{{elem.icon}}"></i>
         <span class="nav-title">{{elem.label}}</span>

@@ -84,7 +84,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                         <a class="nav-link "   role="button"  aria-haspopup="true" aria-expanded="false">
                                             
                                             <i class="fa fa-edit"></i> {{name}}
-                                          
+
                                         </a>
                                     </li>
                                     
@@ -95,7 +95,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     
                                     {% for elem in menu %}
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link " href="{{elem.url}}" id="navbarDropdown2" role="button"  aria-haspopup="true" aria-expanded="false" title="{{elem.label}}">
+                                        <a class="nav-link " href="{{elem.url}}" id="navbarDropdown2" role="button"  aria-haspopup="true" aria-expanded="false" title="{{elem.label}}"
+                                        
+                                        {% if elem.target %}
+                                        target="__blank"
+                                            
+                                        {% endif %}
+                                        >
                                             <i class="{{elem.icon}}"></i>
                 
                                             {% if active_page == elem.id %}

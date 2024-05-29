@@ -8,49 +8,48 @@ Quick start
 
 1. Add "django_reportbroD" to your INSTALLED_APPS setting like this:
 ```
-    INSTALLED_APPS = [
-   
-                ... ,
-   'django_reportbroD.apps.ReportbrodConfig',
-
+INSTALLED_APPS = [
+... ,
+'django_reportbroD.apps.ReportbrodConfig',
    ]
 
 ```
-2. Add LocaleMiddleware to your MIDDLEWARE list in your settings. This allows the reporting app to have translation in Spanish and English. 
+
+2. Include the reportbroD URLconf in your project urls.py like this:
+
+```
+   path("reportbroD/", include("django_reportbroD.urls", namespace="reportbroD")),  
+```
+
+
+3.  Run ``python manage.py migrate`` to create the models and to migrating to data base.
+
+4. Start the development server.
+
+5. Visit the ``/reportbroD/`` URL to create/update/edit/duplicate/remove reports.
+
+
+
+
+> **Traslations** 
+>
+>The next step is optional if you want to use in Spanish and English, otherwise it isn't necessary.
+
+1. Add LocaleMiddleware to your MIDDLEWARE list in your settings. This allows the reporting app to have translation in Spanish and English. 
  ```
         MIDDLEWARE = [
     'django.middleware.locale.LocaleMiddleware',
     ...
-            ],
-            
-        
+            ],  
 ```
 
-3. Add 'django_reportbroD.menus.get_menu_items' to your OPTIONS.context_processors in your TEMPLATES settings. This enables the use of menu for the installed report app. 
- ```
-        'OPTIONS': {
-   
-            'context_processors': [...,
-'django_reportbroD.menus.get_menu_items'
-   
-            ],
-            
-        }
-```
-
-4. Include the reportbroD URLconf in your project urls.py and the i18n urls like this:
+2. Include the i18N URLconf in your project urls.py like this:
 
 ```
-   path("reportbroD/", include("django_reportbroD.urls" namespace="reportbroD")),  
-   path('i18n/', include('django.conf.urls.i18n')),
+   path("i18n/", include("django.conf.urls.i18n")),  
 ```
 
 
-5.  Run ``python manage.py migrate`` to create the models and to migrating to data base.
-
-6. Start the development server.
-
-7. Visit the ``/reportbroD/`` URL to create/update/edit/duplicate/remove reports.
 
 
 Using report
