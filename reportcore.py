@@ -4,7 +4,8 @@ import uuid
 from timeit import default_timer as timer
 
 from django.db.models import Sum
-from django.http import (HttpResponse, HttpResponseBadRequest,HttpResponseServerError)
+from django.http import (HttpResponse, HttpResponseBadRequest,
+                         HttpResponseServerError)
 from django.shortcuts import render
 from django.utils.safestring import SafeString
 from django.views.decorators.clickjacking import xframe_options_exempt
@@ -40,7 +41,7 @@ def edit(request, pk):
     context["active_page"] = "reportlist"
     context["menu"]=get_menu_items()
     context["reportbro_langs"]=reportbro_langs()
-    return render(request, "report.html", context)
+    return render(request, "reportbrod/report.html", context)
 
 
 @xframe_options_exempt

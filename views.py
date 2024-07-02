@@ -19,7 +19,7 @@ from .menus import get_menu_items, reportbro_langs
 
 class ReportList(ListView):
     model = ReportDefinition
-    template_name = "index.html"
+    template_name = "reportbrod/index.html"
     paginate_by = 4
     ordering = ("-last_modified_at", "name")
 
@@ -40,7 +40,7 @@ def deletereport(request, id):
 
 class CreateReport(CreateView):
     model = ReportDefinition
-    template_name = "create.html"
+    template_name = "reportbrod/create.html"
     form_class = ReportForm
     success_url = reverse_lazy("reportbroD:list")
 
@@ -55,7 +55,7 @@ class CreateReport(CreateView):
 
 class EditReport(UpdateView):
     model = ReportDefinition
-    template_name = "edit.html"
+    template_name = "reportbrod/edit.html"
     form_class = ReportForm
     success_url = reverse_lazy("reportbroD:list")
     context_object_name = "reporte"
@@ -74,7 +74,7 @@ def docs_view(request):
     context["active_page"] = "reportdocs"
     context["menu"]=get_menu_items()
     context["reportbro_langs"]=reportbro_langs()
-    return render(request, "document.html", context)
+    return render(request, "reportbrod/document.html", context)
 
 
 
@@ -142,4 +142,4 @@ def importreport(request):
         
     context['form']= ReportImpForm()
 
-    return render(request, "import.html", context)
+    return render(request, "reportbrod/import.html", context)
