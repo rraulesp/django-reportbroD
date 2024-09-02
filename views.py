@@ -15,8 +15,6 @@ from .menus import get_menu_items, reportbro_langs
 # Create your views here.
 
 
-
-
 class ReportList(ListView):
     model = ReportDefinition
     template_name = "reportbrod/index.html"
@@ -26,8 +24,8 @@ class ReportList(ListView):
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
         context["active_page"] = "reportlist"
-        context["menu"]=get_menu_items()
-        context["reportbro_langs"]=reportbro_langs()
+        context["menu"] = get_menu_items()
+        context["reportbro_langs"] = reportbro_langs()
 
         return context
 
@@ -47,8 +45,8 @@ class CreateReport(CreateView):
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
         context["active_page"] = "reportlist"
-        context["menu"]=get_menu_items()
-        context["reportbro_langs"]=reportbro_langs()
+        context["menu"] = get_menu_items()
+        context["reportbro_langs"] = reportbro_langs()
 
         return context
 
@@ -63,8 +61,8 @@ class EditReport(UpdateView):
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
         context["active_page"] = "reportlist"
-        context["menu"]=get_menu_items()
-        context["reportbro_langs"]=reportbro_langs()
+        context["menu"] = get_menu_items()
+        context["reportbro_langs"] = reportbro_langs()
 
         return context
 
@@ -72,10 +70,9 @@ class EditReport(UpdateView):
 def docs_view(request):
     context = {}
     context["active_page"] = "reportdocs"
-    context["menu"]=get_menu_items()
-    context["reportbro_langs"]=reportbro_langs()
+    context["menu"] = get_menu_items()
+    context["reportbro_langs"] = reportbro_langs()
     return render(request, "reportbrod/document.html", context)
-
 
 
 def duplicatereport(request, id):
@@ -103,15 +100,13 @@ def exportreport(request, id):
 def importreport(request):
     context = {}
     context["active_page"] = "reportlist"
-    context["menu"]=get_menu_items()
-    context["reportbro_langs"]=reportbro_langs()
-
+    context["menu"] = get_menu_items()
+    context["reportbro_langs"] = reportbro_langs()
 
     if request.method == "POST":
         form = ReportImpForm(request.POST, request.FILES)
 
         if form.is_valid():
-
             cd = request.FILES["template"]
             actual = datetime.now()
 
@@ -130,8 +125,8 @@ def importreport(request):
                     last_modified_at=actual,
                 )
             except:
-                context['form']= ReportImpForm()
-                context['error']= _("not_format")
+                context["form"] = ReportImpForm()
+                context["error"] = _("not_format")
                 return render(
                     request,
                     "import.html",
@@ -139,7 +134,7 @@ def importreport(request):
                 )
 
             return redirect("reportbroD:list")
-        
-    context['form']= ReportImpForm()
+
+    context["form"] = ReportImpForm()
 
     return render(request, "reportbrod/import.html", context)
