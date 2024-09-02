@@ -3,7 +3,6 @@ from itertools import chain
 
 from django.db import models
 from django.http import HttpResponseServerError
-from PIL import Image, ImageDraw, ImageOps
 
 from .models import ReportDefinition
 from .reportcore import reportPDF, reportXLSX
@@ -21,7 +20,7 @@ def to_dict(instance):
             else:
                 data[f.name] = None
         elif isinstance(f, models.ImageField):
-            if f.value_from_object(instance) is not None:
+            if f.value_from_object(instance):
                 formato = f.value_from_object(instance).url.split(".")[-1]
                 data[f.name] = convert_to_base64(
                     f.value_from_object(instance).url, formato
@@ -103,9 +102,16 @@ def export_report_from_JSON(
     1. download =False, (inline) >the pdf report is showed in the navegator and the user can download it handly or making print, etc.
     2. download =True (attachment) >the pdf report is downloaded directly into pc
     """
+    from django.conf import settings
+
+    complete_url = (
+        str(settings.REPORTBROD_FILE_TEMPLATES) + "/" + path_json + ".json"
+        if hasattr(settings, "REPORTBROD_FILE_TEMPLATES")
+        else str(settings.BASE_DIR / "reportbro") + "/" + path_json + ".json"
+    )
 
     try:
-        with open(path_json) as json_file:
+        with open(complete_url) as json_file:
             report = json.load(json_file)
     except FileNotFoundError:
         return HttpResponseServerError("La ruta especificada no contiene la plantilla.")

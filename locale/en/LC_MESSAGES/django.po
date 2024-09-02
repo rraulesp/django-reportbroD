@@ -24,7 +24,7 @@ msgstr "Change Language"
 msgid "app"
 msgstr "Reports Administration"
 
-msgid "title"
+msgid "titlep"
 msgstr "Reports"
 
 msgid "nameC"

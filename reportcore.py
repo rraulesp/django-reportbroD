@@ -4,8 +4,7 @@ import uuid
 from timeit import default_timer as timer
 
 from django.db.models import Sum
-from django.http import (HttpResponse, HttpResponseBadRequest,
-                         HttpResponseServerError)
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseServerError
 from django.shortcuts import render
 from django.utils.safestring import SafeString
 from django.views.decorators.clickjacking import xframe_options_exempt
@@ -14,7 +13,7 @@ from reportbro import Report, ReportBroError
 
 from .base import create_base_report_template, json_default
 from .models import ReportDefinition, ReportRequest
-from .menus import get_menu_items, reportbro_langs 
+from .menus import get_menu_items, reportbro_langs
 
 MAX_CACHE_SIZE = 1000 * 1024 * 1024  # keep max. 1000 MB of generated pdf files in db
 
@@ -39,8 +38,8 @@ def edit(request, pk):
     context["name"] = row.name
     context["pk"] = pk
     context["active_page"] = "reportlist"
-    context["menu"]=get_menu_items()
-    context["reportbro_langs"]=reportbro_langs()
+    context["menu"] = get_menu_items()
+    context["reportbro_langs"] = reportbro_langs()
     return render(request, "reportbrod/report.html", context)
 
 

@@ -5,7 +5,6 @@ from .models import ReportDefinition
 
 
 class ReportForm(forms.ModelForm):
-
     class Meta:
         model = ReportDefinition
         fields = ["name", "remark"]
@@ -31,7 +30,6 @@ class ReportForm(forms.ModelForm):
 
 
 class ReportImpForm(forms.Form):
-
     template = forms.FileField(
         label="Plantilla",
         widget=forms.FileInput(

@@ -43,7 +43,6 @@ class ReportDefinition(models.Model):
         verbose_name_plural = "Reportes"
 
     def __str__(self):
-
         return self.name
 
     def to_dict(self):
