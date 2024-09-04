@@ -1,4 +1,4 @@
-# django-reportbroD
+# django-reportbrod
 A Django app to create, use and export ReportBro reports (free version) with a admin. 
 
 ![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white) ![lib](https://badgen.net/badge/Export/PDF-XLSX/red?) ![JS](https://badgen.net/badge/Js/Reportbro_Designer/blue?icon=doc)  ![lib](https://badgen.net/badge/Package/Reportbro-lib/red?icon=doc)

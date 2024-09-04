@@ -282,6 +282,9 @@ msgstr "<b>export_report_by_name(template_code, data, extension='pdf', file='rep
 msgid "exp3_desc"
 msgstr "<b>export_report_from_JSON(path_json, data, extension='pdf', file='report')</b>: This feature allows the programmer to render an exported report in a separate JSON file using its specific path and the data passed as context."
 
+msgid "exp31_desc"
+msgstr "To use this function correctly, the report-JSON templates folder path must be configured. In the setting.py the following variable is placed <b>REPORTBROD_FILE_TEMPLATES </b>= 'C://Users//Rider//DJANGO PROJECT//ReportBroDesigner//reportes'. If the variable is not set, by default the path of the JSON reports will be in a folder in the root of the project called 'reportbro'. It is not necessary to enter the file extension (.json)."
+
 #tabla de parametros
 msgid "param"
 msgstr "Parameters"
@@ -293,7 +296,7 @@ msgid "template_name"
 msgstr "Name of the report that was inserted into the database."
 
 msgid "path_json"
-msgstr "Specific path of the JSON-formatted file. (This file is generated with the 'Export' function of this app.) Its relative path can be used depending on the structure of the project."
+msgstr "Name of JSON-formatted file path. (This file is generated with the 'Export' function of this app.) It is not necessary to enter the file extension (.json)."
 
 
 #parametros que son comunes en la tabla
